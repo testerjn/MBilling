@@ -47,23 +47,25 @@
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.detailTab = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.usrContactDetail1 = new MBilling.UI.Views.UserControls.usrContactDetail();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.officeTab = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btnaddaddress = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonTextBox2 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.cmbStateName = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cmbAddressType = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.usrContactDetail1 = new MBilling.UI.Views.UserControls.usrContactDetail();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tabNav)).BeginInit();
             this.tabNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstTab)).BeginInit();
@@ -90,7 +92,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.officeTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
             this.kryptonPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbStateName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAddressType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabNav
@@ -284,6 +287,14 @@
             this.kryptonPanel2.Size = new System.Drawing.Size(578, 496);
             this.kryptonPanel2.TabIndex = 1;
             // 
+            // usrContactDetail1
+            // 
+            this.usrContactDetail1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.usrContactDetail1.Location = new System.Drawing.Point(0, 321);
+            this.usrContactDetail1.Name = "usrContactDetail1";
+            this.usrContactDetail1.Size = new System.Drawing.Size(578, 89);
+            this.usrContactDetail1.TabIndex = 19;
+            // 
             // kryptonPanel4
             // 
             this.kryptonPanel4.Controls.Add(this.btnCancel);
@@ -336,13 +347,14 @@
             // 
             // kryptonPanel3
             // 
+            this.kryptonPanel3.Controls.Add(this.btnaddaddress);
             this.kryptonPanel3.Controls.Add(this.kryptonDateTimePicker1);
             this.kryptonPanel3.Controls.Add(this.kryptonLabel6);
             this.kryptonPanel3.Controls.Add(this.kryptonLabel7);
             this.kryptonPanel3.Controls.Add(this.kryptonTextBox2);
             this.kryptonPanel3.Controls.Add(this.kryptonLabel4);
             this.kryptonPanel3.Controls.Add(this.kryptonTextBox1);
-            this.kryptonPanel3.Controls.Add(this.cmbStateName);
+            this.kryptonPanel3.Controls.Add(this.cmbAddressType);
             this.kryptonPanel3.Controls.Add(this.kryptonLabel3);
             this.kryptonPanel3.Controls.Add(this.txtName);
             this.kryptonPanel3.Controls.Add(this.kryptonLabel2);
@@ -351,6 +363,15 @@
             this.kryptonPanel3.Name = "kryptonPanel3";
             this.kryptonPanel3.Size = new System.Drawing.Size(578, 100);
             this.kryptonPanel3.TabIndex = 16;
+            // 
+            // btnaddaddress
+            // 
+            this.btnaddaddress.Location = new System.Drawing.Point(289, 72);
+            this.btnaddaddress.Name = "btnaddaddress";
+            this.btnaddaddress.Size = new System.Drawing.Size(25, 25);
+            this.btnaddaddress.TabIndex = 2;
+            this.btnaddaddress.Values.Text = "+";
+            this.btnaddaddress.Click += new System.EventHandler(this.btnaddaddress_Click);
             // 
             // kryptonDateTimePicker1
             // 
@@ -399,14 +420,14 @@
             this.kryptonTextBox1.Size = new System.Drawing.Size(71, 20);
             this.kryptonTextBox1.TabIndex = 13;
             // 
-            // cmbStateName
+            // cmbAddressType
             // 
-            this.cmbStateName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStateName.DropDownWidth = 191;
-            this.cmbStateName.Location = new System.Drawing.Point(116, 73);
-            this.cmbStateName.Name = "cmbStateName";
-            this.cmbStateName.Size = new System.Drawing.Size(167, 21);
-            this.cmbStateName.TabIndex = 15;
+            this.cmbAddressType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAddressType.DropDownWidth = 191;
+            this.cmbAddressType.Location = new System.Drawing.Point(116, 73);
+            this.cmbAddressType.Name = "cmbAddressType";
+            this.cmbAddressType.Size = new System.Drawing.Size(167, 21);
+            this.cmbAddressType.TabIndex = 15;
             // 
             // kryptonLabel3
             // 
@@ -433,18 +454,16 @@
             this.kryptonLabel2.TabIndex = 0;
             this.kryptonLabel2.Values.Text = "Name";
             // 
-            // usrContactDetail1
+            // customerBindingSource
             // 
-            this.usrContactDetail1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.usrContactDetail1.Location = new System.Drawing.Point(0, 321);
-            this.usrContactDetail1.Name = "usrContactDetail1";
-            this.usrContactDetail1.Size = new System.Drawing.Size(578, 89);
-            this.usrContactDetail1.TabIndex = 19;
+            this.customerBindingSource.DataSource = typeof(MBilling.Common.ViewModels.CustomerViewModel);
             // 
             // Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(580, 527);
             this.Controls.Add(this.tabNav);
             this.Name = "Customers";
@@ -479,7 +498,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
             this.kryptonPanel3.ResumeLayout(false);
             this.kryptonPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbStateName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAddressType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -511,7 +531,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel7;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox2;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbStateName;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbAddressType;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel3;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker1;
         private ComponentFactory.Krypton.Navigator.KryptonNavigator kryptonNavigator1;
@@ -520,5 +540,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSave;
         private UserControls.usrContactDetail usrContactDetail1;
+        private System.Windows.Forms.BindingSource customerBindingSource;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnaddaddress;
     }
 }

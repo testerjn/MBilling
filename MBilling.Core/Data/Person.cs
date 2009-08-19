@@ -21,13 +21,13 @@ namespace MBilling.Core
             this.PersonAddresses = new HashSet<PersonAddress>();
             this.PersonContacts = new HashSet<PersonContact>();
             this.PersonTaxes = new HashSet<PersonTax>();
-            this.PurchaseOrderHeaders = new HashSet<PurchaseOrderHeader>();
-            this.PurchaseReceivedChallanHeaders = new HashSet<PurchaseReceivedChallanHeader>();
+            //this.PurchaseOrderHeaders = new HashSet<PurchaseOrderHeader>();
+            //this.PurchaseReceivedChallanHeaders = new HashSet<PurchaseReceivedChallanHeader>();
         }
         [Key]
         public int PersonId { get; set; }
 
-        public virtual PersonTypeEnum PersonTypeId { get; set; }
+        public PersonTypeEnum PersonTypeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string PaymentTerms { get; set; }
@@ -45,8 +45,8 @@ namespace MBilling.Core
         
         public virtual ICollection<PersonTax> PersonTaxes { get; set; }
         
-        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
+        //public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
         
-        public virtual ICollection<PurchaseReceivedChallanHeader> PurchaseReceivedChallanHeaders { get; set; }
+        //public virtual ICollection<PurchaseReceivedChallanHeader> PurchaseReceivedChallanHeaders { get; set; }
     }
 }

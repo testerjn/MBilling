@@ -38,8 +38,15 @@ namespace MBilling.Business.Presenters
 
         private void PopulateData()
         {
-            //GetAllTaxRate();
+            GetAllCustomer();
             //GetAllStateProvince();
+            GetAllAddressType();
+        }
+
+        private void GetAllAddressType()
+        {
+            List<string> stateEntityList = Enum.GetNames(typeof(AddressTypeEnum)).ToList();
+            m_view.PopulateAddressType(stateEntityList);
         }
 
         private async void GetAllCustomer()
@@ -91,6 +98,11 @@ namespace MBilling.Business.Presenters
             Customer customerDataEntity = new Customer();
             m_viewModel = new CustomerViewModel(customerDataEntity);
             m_view.ShowModel(m_viewModel);
+        }
+
+        private void AddNewAddress(string strAddressType)
+        {
+            AddressTypeEnum addtype = (AddressTypeEnum)Enum.Parse(typeof(AddressTypeEnum), strAddressType);
         }
         public void AddCustomer()
         {
