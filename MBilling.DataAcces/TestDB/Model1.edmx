@@ -1,0 +1,2062 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="test.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address1" Type="varchar" MaxLength="100" />
+          <Property Name="Address2" Type="varchar" MaxLength="100" />
+          <Property Name="Address3" Type="varchar" MaxLength="100" />
+          <Property Name="Town" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" />
+          <Property Name="CrteatedOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeID" />
+          </Key>
+          <Property Name="AddressTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatabaseLog">
+          <Key>
+            <PropertyRef Name="DatabaseLogID" />
+          </Key>
+          <Property Name="DatabaseLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostTime" Type="datetime" Nullable="false" />
+          <Property Name="DatabaseUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Event" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Schema" Type="nvarchar" MaxLength="128" />
+          <Property Name="Object" Type="nvarchar" MaxLength="128" />
+          <Property Name="TSQL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="XmlEvent" Type="xml" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentTerms" Type="varchar" MaxLength="200" />
+          <Property Name="CreatByUserId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="PersonAddress">
+          <Key>
+            <PropertyRef Name="PersonAddressId" />
+          </Key>
+          <Property Name="PersonAddressId" Type="int" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="AddressId" Type="int" Nullable="false" />
+          <Property Name="AddressTypeId" Type="int" Nullable="false" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PersonContact">
+          <Key>
+            <PropertyRef Name="PersonContactId" />
+          </Key>
+          <Property Name="PersonContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="ContactName" Type="varchar" MaxLength="10" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="50" />
+          <Property Name="Phone1" Type="varchar" MaxLength="10" />
+          <Property Name="Phone2" Type="varchar" MaxLength="10" />
+          <Property Name="Mobile" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="80" />
+          <Property Name="CreateByUserId" Type="int" />
+          <Property Name="CreateOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="PersonTax">
+          <Key>
+            <PropertyRef Name="PersonTaxId" />
+          </Key>
+          <Property Name="PersonTaxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="TaxTypeId" Type="int" Nullable="false" />
+          <Property Name="TaxValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="PersonType">
+          <Key>
+            <PropertyRef Name="PersonTypeID" />
+          </Key>
+          <Property Name="PersonTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Size" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Unit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateByUserId" Type="int" />
+          <Property Name="CreateOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="ProductTypeId" />
+          </Key>
+          <Property Name="ProductTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetail">
+          <Key>
+            <PropertyRef Name="PurchaseOrderDetailID" />
+          </Key>
+          <Property Name="PurchaseOrderID" Type="int" Nullable="false" />
+          <Property Name="PurchaseOrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="OrderQty" Type="smallint" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="LineTotal" Type="money" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderHeader">
+          <Key>
+            <PropertyRef Name="PurchaseOrderId" />
+          </Key>
+          <Property Name="PurchaseOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="ShipDate" Type="datetime" />
+          <Property Name="SubTotal" Type="money" Nullable="false" />
+          <Property Name="TaxAmt" Type="money" Nullable="false" />
+          <Property Name="Freight" Type="money" Nullable="false" />
+          <Property Name="TotalDue" Type="money" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedByUserId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="rowguid" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderTax">
+          <Key>
+            <PropertyRef Name="PurchaseTaxId" />
+          </Key>
+          <Property Name="PurchaseOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseTaxId" Type="int" Nullable="false" />
+          <Property Name="TaxRateId" Type="int" Nullable="false" />
+          <Property Name="LineTotal" Type="money" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="PurchaseReceivedChallanDetail">
+          <Key>
+            <PropertyRef Name="PurchaseReceivedChallanDetailID" />
+          </Key>
+          <Property Name="PurchaseReceivedChallanId" Type="int" Nullable="false" />
+          <Property Name="PurchaseReceivedChallanDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="OrderQty" Type="smallint" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="LineTotal" Type="money" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserId" Type="int" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseReceivedChallanHeader">
+          <Key>
+            <PropertyRef Name="PurchaseReceivedChallanId" />
+          </Key>
+          <Property Name="PurchaseReceivedChallanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseOrderID" Type="int" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="VendorChallanNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VendorChallanDate" Type="datetime" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="ShipDate" Type="datetime" />
+          <Property Name="SubTotal" Type="money" />
+          <Property Name="TaxAmt" Type="money" />
+          <Property Name="Freight" Type="money" />
+          <Property Name="TotalDue" Type="money" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedByUserId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="rowguid" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="PurchaseReceivedChallanTax">
+          <Key>
+            <PropertyRef Name="PurchaseReceivedChallanTaxID" />
+          </Key>
+          <Property Name="PurchaseReceivedChallanTaxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseReceivedChallanId" Type="int" Nullable="false" />
+          <Property Name="TaxRateId" Type="int" Nullable="false" />
+          <Property Name="LineTotal" Type="money" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="QuotationDetail">
+          <Key>
+            <PropertyRef Name="QuotationDetailNo" />
+          </Key>
+          <Property Name="QuotationDetailNo" Type="int" Nullable="false" />
+          <Property Name="QuotationNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductNo" Type="int" />
+          <Property Name="Quatity" Type="int" />
+          <Property Name="Rate" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Amount" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="CreatedByUserId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="QuotationHeader">
+          <Key>
+            <PropertyRef Name="QuotationNo" />
+          </Key>
+          <Property Name="QuotationNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuotationDate" Type="datetime" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="TotalAmount" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="CreateByUserId" Type="int" />
+          <Property Name="CreateOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="SalesOrderDetail">
+          <Key>
+            <PropertyRef Name="SalesOrderDetailID" />
+          </Key>
+          <Property Name="SalesOrderID" Type="int" Nullable="false" />
+          <Property Name="SalesOrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="OrderQty" Type="smallint" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="LineTotal" Type="money" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserId" Type="int" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesOrderHeader">
+          <Key>
+            <PropertyRef Name="SalesOrderId" />
+          </Key>
+          <Property Name="SalesOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="SalesOrderNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="QuotationRef" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="ShipDate" Type="datetime" />
+          <Property Name="BillToAddressID" Type="int" />
+          <Property Name="ShipToAddressID" Type="int" />
+          <Property Name="SubTotal" Type="money" />
+          <Property Name="TaxAmt" Type="money" />
+          <Property Name="Freight" Type="money" />
+          <Property Name="TotalDue" Type="money" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedByUserId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="rowguid" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="SalesOrderTax">
+          <Key>
+            <PropertyRef Name="SalesOrderTaxId" />
+          </Key>
+          <Property Name="SalesOrderTaxId" Type="int" Nullable="false" />
+          <Property Name="SalesOrderId" Type="int" Nullable="false" />
+          <Property Name="TaxTypeId" Type="int" Nullable="false" />
+          <Property Name="LineTotal" Type="money" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="TaxRate">
+          <Key>
+            <PropertyRef Name="TaxRateId" />
+          </Key>
+          <Property Name="TaxRateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateProvinceId" Type="int" />
+          <Property Name="TaxType" Type="tinyint" />
+          <Property Name="TaxRate" Type="smallmoney" />
+          <Property Name="TaxName" Type="varchar" MaxLength="50" />
+          <Property Name="ApplyDate" Type="date" />
+          <Property Name="CreateByUserId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="TaxType">
+          <Key>
+            <PropertyRef Name="TaxTypeId" />
+          </Key>
+          <Property Name="TaxTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValueLength" Type="smallint" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="WorkOrderDetail">
+          <Key>
+            <PropertyRef Name="WorkOrderDetailID" />
+          </Key>
+          <Property Name="WorkOrderID" Type="int" Nullable="false" />
+          <Property Name="WorkOrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="OrderQty" Type="smallint" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="LineTotal" Type="money" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserId" Type="int" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkOrderHeader">
+          <Key>
+            <PropertyRef Name="WorkOrderId" />
+          </Key>
+          <Property Name="WorkOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseOrderID" Type="int" Nullable="false" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="ShipDate" Type="datetime" />
+          <Property Name="SubTotal" Type="money" />
+          <Property Name="TaxAmt" Type="money" />
+          <Property Name="Freight" Type="money" />
+          <Property Name="TotalDue" Type="money" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedByUserId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="rowguid" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="WorkOrderReceivedChallanDetail">
+          <Key>
+            <PropertyRef Name="WorkOrderReceivedChallanDetailID" />
+          </Key>
+          <Property Name="WorkOrderReceivedChallanId" Type="int" Nullable="false" />
+          <Property Name="WorkOrderReceivedChallanDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="OrderQty" Type="smallint" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="LineTotal" Type="money" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByUserId" Type="int" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkOrderReceivedChallanHeader">
+          <Key>
+            <PropertyRef Name="WorkOrderReceivedChallanId" />
+          </Key>
+          <Property Name="WorkOrderReceivedChallanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkOrderOrderID" Type="int" Nullable="false" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="VendorChallanNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VendorChallanDate" Type="datetime" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="ShipDate" Type="datetime" />
+          <Property Name="SubTotal" Type="money" />
+          <Property Name="TaxAmt" Type="money" />
+          <Property Name="Freight" Type="money" />
+          <Property Name="TotalDue" Type="money" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedByUserId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedByUserId" Type="int" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="rowguid" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="WorkOrderReceivedChallanTax">
+          <Key>
+            <PropertyRef Name="WorkOrderReceivedChallanTaxId" />
+          </Key>
+          <Property Name="WorkOrderReceivedChallanTaxId" Type="int" Nullable="false" />
+          <Property Name="WorkOrderReceivedChallanId" Type="int" Nullable="false" />
+          <Property Name="TasxTypeId" Type="int" Nullable="false" />
+          <Property Name="LineTotal" Type="money" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="WorkOrderTax">
+          <Key>
+            <PropertyRef Name="WorkOrderTaxId" />
+          </Key>
+          <Property Name="WorkOrderTaxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkOrderId" Type="int" Nullable="false" />
+          <Property Name="TaxTypeId" Type="int" Nullable="false" />
+          <Property Name="LineTotal" Type="money" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Person_PersonType">
+          <End Role="PersonType" Type="Self.PersonType" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonType">
+              <PropertyRef Name="PersonTypeID" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="PersonTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonAddress_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="PersonAddress" Type="Self.PersonAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="PersonAddress">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonAddress_AddressType">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="1" />
+          <End Role="PersonAddress" Type="Self.PersonAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeID" />
+            </Principal>
+            <Dependent Role="PersonAddress">
+              <PropertyRef Name="AddressTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonAddress_PersonId">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonAddress" Type="Self.PersonAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="PersonAddress">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonContactDetail_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonContact" Type="Self.PersonContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="PersonContact">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonTax_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonTax" Type="Self.PersonTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="PersonTax">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonTax_TaxType">
+          <End Role="TaxType" Type="Self.TaxType" Multiplicity="1" />
+          <End Role="PersonTax" Type="Self.PersonTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxType">
+              <PropertyRef Name="TaxTypeId" />
+            </Principal>
+            <Dependent Role="PersonTax">
+              <PropertyRef Name="TaxTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="ProductTypeId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetail_PurchaseOrderHeader">
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="1" />
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrderHeader">
+              <PropertyRef Name="PurchaseOrderId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="PurchaseOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderHeader_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderHeader">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReceivedChallanHeader_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PurchaseReceivedChallanHeader" Type="Self.PurchaseReceivedChallanHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="PurchaseReceivedChallanHeader">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReceivedChallanHeader_PurchaseOrderHeader">
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="1" />
+          <End Role="PurchaseReceivedChallanHeader" Type="Self.PurchaseReceivedChallanHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrderHeader">
+              <PropertyRef Name="PurchaseOrderId" />
+            </Principal>
+            <Dependent Role="PurchaseReceivedChallanHeader">
+              <PropertyRef Name="PurchaseOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReceivedChallanTax_PurchaseReceivedChallanHeader">
+          <End Role="PurchaseReceivedChallanHeader" Type="Self.PurchaseReceivedChallanHeader" Multiplicity="1" />
+          <End Role="PurchaseReceivedChallanTax" Type="Self.PurchaseReceivedChallanTax" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseReceivedChallanHeader">
+              <PropertyRef Name="PurchaseReceivedChallanId" />
+            </Principal>
+            <Dependent Role="PurchaseReceivedChallanTax">
+              <PropertyRef Name="PurchaseReceivedChallanTaxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseTax_PurchaseOrderHeader">
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="1" />
+          <End Role="PurchaseOrderTax" Type="Self.PurchaseOrderTax" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrderHeader">
+              <PropertyRef Name="PurchaseOrderId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderTax">
+              <PropertyRef Name="PurchaseTaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderTax_SalesOrderHeader">
+          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="1" />
+          <End Role="SalesOrderTax" Type="Self.SalesOrderTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrderHeader">
+              <PropertyRef Name="SalesOrderId" />
+            </Principal>
+            <Dependent Role="SalesOrderTax">
+              <PropertyRef Name="SalesOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrderReceivedChallanTax_WorkOrderReceivedChallanHeader">
+          <End Role="WorkOrderReceivedChallanHeader" Type="Self.WorkOrderReceivedChallanHeader" Multiplicity="1" />
+          <End Role="WorkOrderReceivedChallanTax" Type="Self.WorkOrderReceivedChallanTax" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrderReceivedChallanHeader">
+              <PropertyRef Name="WorkOrderReceivedChallanId" />
+            </Principal>
+            <Dependent Role="WorkOrderReceivedChallanTax">
+              <PropertyRef Name="WorkOrderReceivedChallanTaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrderTax_WorkOrderHeader">
+          <End Role="WorkOrderHeader" Type="Self.WorkOrderHeader" Multiplicity="1" />
+          <End Role="WorkOrderTax" Type="Self.WorkOrderTax" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrderHeader">
+              <PropertyRef Name="WorkOrderId" />
+            </Principal>
+            <Dependent Role="WorkOrderTax">
+              <PropertyRef Name="WorkOrderTaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ufnLeadingZeros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="Value" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="testStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressType" EntityType="Self.AddressType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DatabaseLog" EntityType="Self.DatabaseLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonAddress" EntityType="Self.PersonAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonContact" EntityType="Self.PersonContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonTax" EntityType="Self.PersonTax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonType" EntityType="Self.PersonType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderDetail" EntityType="Self.PurchaseOrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderHeader" EntityType="Self.PurchaseOrderHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderTax" EntityType="Self.PurchaseOrderTax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseReceivedChallanDetail" EntityType="Self.PurchaseReceivedChallanDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseReceivedChallanHeader" EntityType="Self.PurchaseReceivedChallanHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseReceivedChallanTax" EntityType="Self.PurchaseReceivedChallanTax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuotationDetail" EntityType="Self.QuotationDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuotationHeader" EntityType="Self.QuotationHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesOrderDetail" EntityType="Self.SalesOrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesOrderHeader" EntityType="Self.SalesOrderHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesOrderTax" EntityType="Self.SalesOrderTax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxRate" EntityType="Self.TaxRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxType" EntityType="Self.TaxType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkOrderDetail" EntityType="Self.WorkOrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkOrderHeader" EntityType="Self.WorkOrderHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkOrderReceivedChallanDetail" EntityType="Self.WorkOrderReceivedChallanDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkOrderReceivedChallanHeader" EntityType="Self.WorkOrderReceivedChallanHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkOrderReceivedChallanTax" EntityType="Self.WorkOrderReceivedChallanTax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkOrderTax" EntityType="Self.WorkOrderTax" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Person_PersonType" Association="Self.FK_Person_PersonType">
+            <End Role="PersonType" EntitySet="PersonType" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonAddress_Address" Association="Self.FK_PersonAddress_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="PersonAddress" EntitySet="PersonAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonAddress_AddressType" Association="Self.FK_PersonAddress_AddressType">
+            <End Role="AddressType" EntitySet="AddressType" />
+            <End Role="PersonAddress" EntitySet="PersonAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonAddress_PersonId" Association="Self.FK_PersonAddress_PersonId">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PersonAddress" EntitySet="PersonAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonContactDetail_Person" Association="Self.FK_PersonContactDetail_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PersonContact" EntitySet="PersonContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonTax_Person" Association="Self.FK_PersonTax_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PersonTax" EntitySet="PersonTax" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonTax_TaxType" Association="Self.FK_PersonTax_TaxType">
+            <End Role="TaxType" EntitySet="TaxType" />
+            <End Role="PersonTax" EntitySet="PersonTax" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+            <End Role="ProductType" EntitySet="ProductType" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_Product" Association="Self.FK_PurchaseOrderDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_PurchaseOrderHeader" Association="Self.FK_PurchaseOrderDetail_PurchaseOrderHeader">
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeader" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderHeader_Person" Association="Self.FK_PurchaseOrderHeader_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReceivedChallanHeader_Person" Association="Self.FK_PurchaseReceivedChallanHeader_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PurchaseReceivedChallanHeader" EntitySet="PurchaseReceivedChallanHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReceivedChallanHeader_PurchaseOrderHeader" Association="Self.FK_PurchaseReceivedChallanHeader_PurchaseOrderHeader">
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeader" />
+            <End Role="PurchaseReceivedChallanHeader" EntitySet="PurchaseReceivedChallanHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReceivedChallanTax_PurchaseReceivedChallanHeader" Association="Self.FK_PurchaseReceivedChallanTax_PurchaseReceivedChallanHeader">
+            <End Role="PurchaseReceivedChallanHeader" EntitySet="PurchaseReceivedChallanHeader" />
+            <End Role="PurchaseReceivedChallanTax" EntitySet="PurchaseReceivedChallanTax" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseTax_PurchaseOrderHeader" Association="Self.FK_PurchaseTax_PurchaseOrderHeader">
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeader" />
+            <End Role="PurchaseOrderTax" EntitySet="PurchaseOrderTax" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderTax_SalesOrderHeader" Association="Self.FK_SalesOrderTax_SalesOrderHeader">
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
+            <End Role="SalesOrderTax" EntitySet="SalesOrderTax" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrderReceivedChallanTax_WorkOrderReceivedChallanHeader" Association="Self.FK_WorkOrderReceivedChallanTax_WorkOrderReceivedChallanHeader">
+            <End Role="WorkOrderReceivedChallanHeader" EntitySet="WorkOrderReceivedChallanHeader" />
+            <End Role="WorkOrderReceivedChallanTax" EntitySet="WorkOrderReceivedChallanTax" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrderTax_WorkOrderHeader" Association="Self.FK_WorkOrderTax_WorkOrderHeader">
+            <End Role="WorkOrderHeader" EntitySet="WorkOrderHeader" />
+            <End Role="WorkOrderTax" EntitySet="WorkOrderTax" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="test" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Town" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" />
+          <Property Name="CrteatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="PersonAddresses" Relationship="Self.FK_PersonAddress_Address" FromRole="Address" ToRole="PersonAddress" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeID" />
+          </Key>
+          <Property Name="AddressTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PersonAddresses" Relationship="Self.FK_PersonAddress_AddressType" FromRole="AddressType" ToRole="PersonAddress" />
+        </EntityType>
+        <EntityType Name="DatabaseLog">
+          <Key>
+            <PropertyRef Name="DatabaseLogID" />
+          </Key>
+          <Property Name="DatabaseLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DatabaseUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Event" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Schema" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Object" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TSQL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="XmlEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentTerms" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatByUserId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="PersonType" Relationship="Self.FK_Person_PersonType" FromRole="Person" ToRole="PersonType" />
+          <NavigationProperty Name="PersonAddresses" Relationship="Self.FK_PersonAddress_PersonId" FromRole="Person" ToRole="PersonAddress" />
+          <NavigationProperty Name="PersonContacts" Relationship="Self.FK_PersonContactDetail_Person" FromRole="Person" ToRole="PersonContact" />
+          <NavigationProperty Name="PersonTaxes" Relationship="Self.FK_PersonTax_Person" FromRole="Person" ToRole="PersonTax" />
+          <NavigationProperty Name="PurchaseOrderHeaders" Relationship="Self.FK_PurchaseOrderHeader_Person" FromRole="Person" ToRole="PurchaseOrderHeader" />
+          <NavigationProperty Name="PurchaseReceivedChallanHeaders" Relationship="Self.FK_PurchaseReceivedChallanHeader_Person" FromRole="Person" ToRole="PurchaseReceivedChallanHeader" />
+        </EntityType>
+        <EntityType Name="PersonAddress">
+          <Key>
+            <PropertyRef Name="PersonAddressId" />
+          </Key>
+          <Property Name="PersonAddressId" Type="Int32" Nullable="false" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="AddressId" Type="Int32" Nullable="false" />
+          <Property Name="AddressTypeId" Type="Int32" Nullable="false" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_PersonAddress_Address" FromRole="PersonAddress" ToRole="Address" />
+          <NavigationProperty Name="AddressType" Relationship="Self.FK_PersonAddress_AddressType" FromRole="PersonAddress" ToRole="AddressType" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_PersonAddress_PersonId" FromRole="PersonAddress" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="PersonContact">
+          <Key>
+            <PropertyRef Name="PersonContactId" />
+          </Key>
+          <Property Name="PersonContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="ContactName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CreateByUserId" Type="Int32" />
+          <Property Name="CreateOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_PersonContactDetail_Person" FromRole="PersonContact" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="PersonTax">
+          <Key>
+            <PropertyRef Name="PersonTaxId" />
+          </Key>
+          <Property Name="PersonTaxId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="TaxTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TaxValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_PersonTax_Person" FromRole="PersonTax" ToRole="Person" />
+          <NavigationProperty Name="TaxType" Relationship="Self.FK_PersonTax_TaxType" FromRole="PersonTax" ToRole="TaxType" />
+        </EntityType>
+        <EntityType Name="PersonType">
+          <Key>
+            <PropertyRef Name="PersonTypeID" />
+          </Key>
+          <Property Name="PersonTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="People" Relationship="Self.FK_Person_PersonType" FromRole="PersonType" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateByUserId" Type="Int32" />
+          <Property Name="CreateOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="ProductType" Relationship="Self.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK_PurchaseOrderDetail_Product" FromRole="Product" ToRole="PurchaseOrderDetail" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="ProductTypeId" />
+          </Key>
+          <Property Name="ProductTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetail">
+          <Key>
+            <PropertyRef Name="PurchaseOrderDetailID" />
+          </Key>
+          <Property Name="PurchaseOrderID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseOrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="OrderQty" Type="Int16" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="LineTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PurchaseOrderDetail_Product" FromRole="PurchaseOrderDetail" ToRole="Product" />
+          <NavigationProperty Name="PurchaseOrderHeader" Relationship="Self.FK_PurchaseOrderDetail_PurchaseOrderHeader" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrderHeader" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderHeader">
+          <Key>
+            <PropertyRef Name="PurchaseOrderId" />
+          </Key>
+          <Property Name="PurchaseOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="ShipDate" Type="DateTime" Precision="3" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="TaxAmt" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Freight" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="TotalDue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUserId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="rowguid" Type="Guid" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_PurchaseOrderHeader_Person" FromRole="PurchaseOrderHeader" ToRole="Person" />
+          <NavigationProperty Name="PurchaseOrderDetail" Relationship="Self.FK_PurchaseOrderDetail_PurchaseOrderHeader" FromRole="PurchaseOrderHeader" ToRole="PurchaseOrderDetail" />
+          <NavigationProperty Name="PurchaseReceivedChallanHeaders" Relationship="Self.FK_PurchaseReceivedChallanHeader_PurchaseOrderHeader" FromRole="PurchaseOrderHeader" ToRole="PurchaseReceivedChallanHeader" />
+          <NavigationProperty Name="PurchaseOrderTax" Relationship="Self.FK_PurchaseTax_PurchaseOrderHeader" FromRole="PurchaseOrderHeader" ToRole="PurchaseOrderTax" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderTax">
+          <Key>
+            <PropertyRef Name="PurchaseTaxId" />
+          </Key>
+          <Property Name="PurchaseOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseTaxId" Type="Int32" Nullable="false" />
+          <Property Name="TaxRateId" Type="Int32" Nullable="false" />
+          <Property Name="LineTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="PurchaseOrderHeader" Relationship="Self.FK_PurchaseTax_PurchaseOrderHeader" FromRole="PurchaseOrderTax" ToRole="PurchaseOrderHeader" />
+        </EntityType>
+        <EntityType Name="PurchaseReceivedChallanDetail">
+          <Key>
+            <PropertyRef Name="PurchaseReceivedChallanDetailID" />
+          </Key>
+          <Property Name="PurchaseReceivedChallanId" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseReceivedChallanDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="OrderQty" Type="Int16" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="LineTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseReceivedChallanHeader">
+          <Key>
+            <PropertyRef Name="PurchaseReceivedChallanId" />
+          </Key>
+          <Property Name="PurchaseReceivedChallanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseOrderID" Type="Int32" Nullable="false" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="VendorChallanNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VendorChallanDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="ShipDate" Type="DateTime" Precision="3" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxAmt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Freight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalDue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Comment" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUserId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="rowguid" Type="Guid" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_PurchaseReceivedChallanHeader_Person" FromRole="PurchaseReceivedChallanHeader" ToRole="Person" />
+          <NavigationProperty Name="PurchaseOrderHeader" Relationship="Self.FK_PurchaseReceivedChallanHeader_PurchaseOrderHeader" FromRole="PurchaseReceivedChallanHeader" ToRole="PurchaseOrderHeader" />
+          <NavigationProperty Name="PurchaseReceivedChallanTax" Relationship="Self.FK_PurchaseReceivedChallanTax_PurchaseReceivedChallanHeader" FromRole="PurchaseReceivedChallanHeader" ToRole="PurchaseReceivedChallanTax" />
+        </EntityType>
+        <EntityType Name="PurchaseReceivedChallanTax">
+          <Key>
+            <PropertyRef Name="PurchaseReceivedChallanTaxID" />
+          </Key>
+          <Property Name="PurchaseReceivedChallanTaxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseReceivedChallanId" Type="Int32" Nullable="false" />
+          <Property Name="TaxRateId" Type="Int32" Nullable="false" />
+          <Property Name="LineTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="PurchaseReceivedChallanHeader" Relationship="Self.FK_PurchaseReceivedChallanTax_PurchaseReceivedChallanHeader" FromRole="PurchaseReceivedChallanTax" ToRole="PurchaseReceivedChallanHeader" />
+        </EntityType>
+        <EntityType Name="QuotationDetail">
+          <Key>
+            <PropertyRef Name="QuotationDetailNo" />
+          </Key>
+          <Property Name="QuotationDetailNo" Type="Int32" Nullable="false" />
+          <Property Name="QuotationNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductNo" Type="Int32" />
+          <Property Name="Quatity" Type="Int32" />
+          <Property Name="Rate" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="CreatedByUserId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="QuotationHeader">
+          <Key>
+            <PropertyRef Name="QuotationNo" />
+          </Key>
+          <Property Name="QuotationNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuotationDate" Type="DateTime" Precision="3" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="CreateByUserId" Type="Int32" />
+          <Property Name="CreateOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SalesOrderDetail">
+          <Key>
+            <PropertyRef Name="SalesOrderDetailID" />
+          </Key>
+          <Property Name="SalesOrderID" Type="Int32" Nullable="false" />
+          <Property Name="SalesOrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="OrderQty" Type="Int16" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="LineTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesOrderHeader">
+          <Key>
+            <PropertyRef Name="SalesOrderId" />
+          </Key>
+          <Property Name="SalesOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="SalesOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuotationRef" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="ShipDate" Type="DateTime" Precision="3" />
+          <Property Name="BillToAddressID" Type="Int32" />
+          <Property Name="ShipToAddressID" Type="Int32" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxAmt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Freight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalDue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Comment" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUserId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="rowguid" Type="Guid" />
+          <NavigationProperty Name="SalesOrderTaxes" Relationship="Self.FK_SalesOrderTax_SalesOrderHeader" FromRole="SalesOrderHeader" ToRole="SalesOrderTax" />
+        </EntityType>
+        <EntityType Name="SalesOrderTax">
+          <Key>
+            <PropertyRef Name="SalesOrderTaxId" />
+          </Key>
+          <Property Name="SalesOrderTaxId" Type="Int32" Nullable="false" />
+          <Property Name="SalesOrderId" Type="Int32" Nullable="false" />
+          <Property Name="TaxTypeId" Type="Int32" Nullable="false" />
+          <Property Name="LineTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="SalesOrderHeader" Relationship="Self.FK_SalesOrderTax_SalesOrderHeader" FromRole="SalesOrderTax" ToRole="SalesOrderHeader" />
+        </EntityType>
+        <EntityType Name="TaxRate">
+          <Key>
+            <PropertyRef Name="TaxRateId" />
+          </Key>
+          <Property Name="TaxRateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateProvinceId" Type="Int32" />
+          <Property Name="TaxType" Type="Byte" />
+          <Property Name="TaxRate1" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="TaxName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApplyDate" Type="DateTime" Precision="0" />
+          <Property Name="CreateByUserId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TaxType">
+          <Key>
+            <PropertyRef Name="TaxTypeId" />
+          </Key>
+          <Property Name="TaxTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ValueLength" Type="Int16" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="PersonTaxes" Relationship="Self.FK_PersonTax_TaxType" FromRole="TaxType" ToRole="PersonTax" />
+        </EntityType>
+        <EntityType Name="WorkOrderDetail">
+          <Key>
+            <PropertyRef Name="WorkOrderDetailID" />
+          </Key>
+          <Property Name="WorkOrderID" Type="Int32" Nullable="false" />
+          <Property Name="WorkOrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="OrderQty" Type="Int16" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="LineTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkOrderHeader">
+          <Key>
+            <PropertyRef Name="WorkOrderId" />
+          </Key>
+          <Property Name="WorkOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseOrderID" Type="Int32" Nullable="false" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="ShipDate" Type="DateTime" Precision="3" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxAmt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Freight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalDue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Comment" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUserId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="rowguid" Type="Guid" />
+          <NavigationProperty Name="WorkOrderTax" Relationship="Self.FK_WorkOrderTax_WorkOrderHeader" FromRole="WorkOrderHeader" ToRole="WorkOrderTax" />
+        </EntityType>
+        <EntityType Name="WorkOrderReceivedChallanDetail">
+          <Key>
+            <PropertyRef Name="WorkOrderReceivedChallanDetailID" />
+          </Key>
+          <Property Name="WorkOrderReceivedChallanId" Type="Int32" Nullable="false" />
+          <Property Name="WorkOrderReceivedChallanDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="OrderQty" Type="Int16" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="LineTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkOrderReceivedChallanHeader">
+          <Key>
+            <PropertyRef Name="WorkOrderReceivedChallanId" />
+          </Key>
+          <Property Name="WorkOrderReceivedChallanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkOrderOrderID" Type="Int32" Nullable="false" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="VendorChallanNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VendorChallanDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="ShipDate" Type="DateTime" Precision="3" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxAmt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Freight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalDue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Comment" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUserId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedByUserId" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="rowguid" Type="Guid" />
+          <NavigationProperty Name="WorkOrderReceivedChallanTax" Relationship="Self.FK_WorkOrderReceivedChallanTax_WorkOrderReceivedChallanHeader" FromRole="WorkOrderReceivedChallanHeader" ToRole="WorkOrderReceivedChallanTax" />
+        </EntityType>
+        <EntityType Name="WorkOrderReceivedChallanTax">
+          <Key>
+            <PropertyRef Name="WorkOrderReceivedChallanTaxId" />
+          </Key>
+          <Property Name="WorkOrderReceivedChallanTaxId" Type="Int32" Nullable="false" />
+          <Property Name="WorkOrderReceivedChallanId" Type="Int32" Nullable="false" />
+          <Property Name="TasxTypeId" Type="Int32" Nullable="false" />
+          <Property Name="LineTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="WorkOrderReceivedChallanHeader" Relationship="Self.FK_WorkOrderReceivedChallanTax_WorkOrderReceivedChallanHeader" FromRole="WorkOrderReceivedChallanTax" ToRole="WorkOrderReceivedChallanHeader" />
+        </EntityType>
+        <EntityType Name="WorkOrderTax">
+          <Key>
+            <PropertyRef Name="WorkOrderTaxId" />
+          </Key>
+          <Property Name="WorkOrderTaxId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkOrderId" Type="Int32" Nullable="false" />
+          <Property Name="TaxTypeId" Type="Int32" Nullable="false" />
+          <Property Name="LineTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="WorkOrderHeader" Relationship="Self.FK_WorkOrderTax_WorkOrderHeader" FromRole="WorkOrderTax" ToRole="WorkOrderHeader" />
+        </EntityType>
+        <Association Name="FK_PersonAddress_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="PersonAddress" Type="Self.PersonAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="PersonAddress">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonAddress_AddressType">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="1" />
+          <End Role="PersonAddress" Type="Self.PersonAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeID" />
+            </Principal>
+            <Dependent Role="PersonAddress">
+              <PropertyRef Name="AddressTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Person_PersonType">
+          <End Role="PersonType" Type="Self.PersonType" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonType">
+              <PropertyRef Name="PersonTypeID" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="PersonTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonAddress_PersonId">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonAddress" Type="Self.PersonAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="PersonAddress">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonContactDetail_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonContact" Type="Self.PersonContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="PersonContact">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonTax_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PersonTax" Type="Self.PersonTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="PersonTax">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderHeader_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderHeader">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReceivedChallanHeader_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="PurchaseReceivedChallanHeader" Type="Self.PurchaseReceivedChallanHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="PurchaseReceivedChallanHeader">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonTax_TaxType">
+          <End Role="TaxType" Type="Self.TaxType" Multiplicity="1" />
+          <End Role="PersonTax" Type="Self.PersonTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxType">
+              <PropertyRef Name="TaxTypeId" />
+            </Principal>
+            <Dependent Role="PersonTax">
+              <PropertyRef Name="TaxTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="ProductTypeId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderDetail_PurchaseOrderHeader">
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="1" />
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrderHeader">
+              <PropertyRef Name="PurchaseOrderId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="PurchaseOrderDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReceivedChallanHeader_PurchaseOrderHeader">
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="1" />
+          <End Role="PurchaseReceivedChallanHeader" Type="Self.PurchaseReceivedChallanHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrderHeader">
+              <PropertyRef Name="PurchaseOrderId" />
+            </Principal>
+            <Dependent Role="PurchaseReceivedChallanHeader">
+              <PropertyRef Name="PurchaseOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseTax_PurchaseOrderHeader">
+          <End Role="PurchaseOrderHeader" Type="Self.PurchaseOrderHeader" Multiplicity="1" />
+          <End Role="PurchaseOrderTax" Type="Self.PurchaseOrderTax" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrderHeader">
+              <PropertyRef Name="PurchaseOrderId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderTax">
+              <PropertyRef Name="PurchaseTaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseReceivedChallanTax_PurchaseReceivedChallanHeader">
+          <End Role="PurchaseReceivedChallanHeader" Type="Self.PurchaseReceivedChallanHeader" Multiplicity="1" />
+          <End Role="PurchaseReceivedChallanTax" Type="Self.PurchaseReceivedChallanTax" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseReceivedChallanHeader">
+              <PropertyRef Name="PurchaseReceivedChallanId" />
+            </Principal>
+            <Dependent Role="PurchaseReceivedChallanTax">
+              <PropertyRef Name="PurchaseReceivedChallanTaxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderTax_SalesOrderHeader">
+          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="1" />
+          <End Role="SalesOrderTax" Type="Self.SalesOrderTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrderHeader">
+              <PropertyRef Name="SalesOrderId" />
+            </Principal>
+            <Dependent Role="SalesOrderTax">
+              <PropertyRef Name="SalesOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrderTax_WorkOrderHeader">
+          <End Role="WorkOrderHeader" Type="Self.WorkOrderHeader" Multiplicity="1" />
+          <End Role="WorkOrderTax" Type="Self.WorkOrderTax" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrderHeader">
+              <PropertyRef Name="WorkOrderId" />
+            </Principal>
+            <Dependent Role="WorkOrderTax">
+              <PropertyRef Name="WorkOrderTaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkOrderReceivedChallanTax_WorkOrderReceivedChallanHeader">
+          <End Role="WorkOrderReceivedChallanHeader" Type="Self.WorkOrderReceivedChallanHeader" Multiplicity="1" />
+          <End Role="WorkOrderReceivedChallanTax" Type="Self.WorkOrderReceivedChallanTax" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WorkOrderReceivedChallanHeader">
+              <PropertyRef Name="WorkOrderReceivedChallanId" />
+            </Principal>
+            <Dependent Role="WorkOrderReceivedChallanTax">
+              <PropertyRef Name="WorkOrderReceivedChallanTaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MErpBillingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="AddressTypes" EntityType="Self.AddressType" />
+          <EntitySet Name="DatabaseLogs" EntityType="Self.DatabaseLog" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="PersonAddresses" EntityType="Self.PersonAddress" />
+          <EntitySet Name="PersonContacts" EntityType="Self.PersonContact" />
+          <EntitySet Name="PersonTaxes" EntityType="Self.PersonTax" />
+          <EntitySet Name="PersonTypes" EntityType="Self.PersonType" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductTypes" EntityType="Self.ProductType" />
+          <EntitySet Name="PurchaseOrderDetails" EntityType="Self.PurchaseOrderDetail" />
+          <EntitySet Name="PurchaseOrderHeaders" EntityType="Self.PurchaseOrderHeader" />
+          <EntitySet Name="PurchaseOrderTaxes" EntityType="Self.PurchaseOrderTax" />
+          <EntitySet Name="PurchaseReceivedChallanDetails" EntityType="Self.PurchaseReceivedChallanDetail" />
+          <EntitySet Name="PurchaseReceivedChallanHeaders" EntityType="Self.PurchaseReceivedChallanHeader" />
+          <EntitySet Name="PurchaseReceivedChallanTaxes" EntityType="Self.PurchaseReceivedChallanTax" />
+          <EntitySet Name="QuotationDetails" EntityType="Self.QuotationDetail" />
+          <EntitySet Name="QuotationHeaders" EntityType="Self.QuotationHeader" />
+          <EntitySet Name="SalesOrderDetails" EntityType="Self.SalesOrderDetail" />
+          <EntitySet Name="SalesOrderHeaders" EntityType="Self.SalesOrderHeader" />
+          <EntitySet Name="SalesOrderTaxes" EntityType="Self.SalesOrderTax" />
+          <EntitySet Name="TaxRates" EntityType="Self.TaxRate" />
+          <EntitySet Name="TaxTypes" EntityType="Self.TaxType" />
+          <EntitySet Name="WorkOrderDetails" EntityType="Self.WorkOrderDetail" />
+          <EntitySet Name="WorkOrderHeaders" EntityType="Self.WorkOrderHeader" />
+          <EntitySet Name="WorkOrderReceivedChallanDetails" EntityType="Self.WorkOrderReceivedChallanDetail" />
+          <EntitySet Name="WorkOrderReceivedChallanHeaders" EntityType="Self.WorkOrderReceivedChallanHeader" />
+          <EntitySet Name="WorkOrderReceivedChallanTaxes" EntityType="Self.WorkOrderReceivedChallanTax" />
+          <EntitySet Name="WorkOrderTaxes" EntityType="Self.WorkOrderTax" />
+          <AssociationSet Name="FK_PersonAddress_Address" Association="Self.FK_PersonAddress_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="PersonAddress" EntitySet="PersonAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonAddress_AddressType" Association="Self.FK_PersonAddress_AddressType">
+            <End Role="AddressType" EntitySet="AddressTypes" />
+            <End Role="PersonAddress" EntitySet="PersonAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Person_PersonType" Association="Self.FK_Person_PersonType">
+            <End Role="PersonType" EntitySet="PersonTypes" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonAddress_PersonId" Association="Self.FK_PersonAddress_PersonId">
+            <End Role="Person" EntitySet="People" />
+            <End Role="PersonAddress" EntitySet="PersonAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonContactDetail_Person" Association="Self.FK_PersonContactDetail_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="PersonContact" EntitySet="PersonContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonTax_Person" Association="Self.FK_PersonTax_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="PersonTax" EntitySet="PersonTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderHeader_Person" Association="Self.FK_PurchaseOrderHeader_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReceivedChallanHeader_Person" Association="Self.FK_PurchaseReceivedChallanHeader_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="PurchaseReceivedChallanHeader" EntitySet="PurchaseReceivedChallanHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonTax_TaxType" Association="Self.FK_PersonTax_TaxType">
+            <End Role="TaxType" EntitySet="TaxTypes" />
+            <End Role="PersonTax" EntitySet="PersonTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+            <End Role="ProductType" EntitySet="ProductTypes" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_Product" Association="Self.FK_PurchaseOrderDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderDetail_PurchaseOrderHeader" Association="Self.FK_PurchaseOrderDetail_PurchaseOrderHeader">
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReceivedChallanHeader_PurchaseOrderHeader" Association="Self.FK_PurchaseReceivedChallanHeader_PurchaseOrderHeader">
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />
+            <End Role="PurchaseReceivedChallanHeader" EntitySet="PurchaseReceivedChallanHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseTax_PurchaseOrderHeader" Association="Self.FK_PurchaseTax_PurchaseOrderHeader">
+            <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />
+            <End Role="PurchaseOrderTax" EntitySet="PurchaseOrderTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseReceivedChallanTax_PurchaseReceivedChallanHeader" Association="Self.FK_PurchaseReceivedChallanTax_PurchaseReceivedChallanHeader">
+            <End Role="PurchaseReceivedChallanHeader" EntitySet="PurchaseReceivedChallanHeaders" />
+            <End Role="PurchaseReceivedChallanTax" EntitySet="PurchaseReceivedChallanTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderTax_SalesOrderHeader" Association="Self.FK_SalesOrderTax_SalesOrderHeader">
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+            <End Role="SalesOrderTax" EntitySet="SalesOrderTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrderTax_WorkOrderHeader" Association="Self.FK_WorkOrderTax_WorkOrderHeader">
+            <End Role="WorkOrderHeader" EntitySet="WorkOrderHeaders" />
+            <End Role="WorkOrderTax" EntitySet="WorkOrderTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkOrderReceivedChallanTax_WorkOrderReceivedChallanHeader" Association="Self.FK_WorkOrderReceivedChallanTax_WorkOrderReceivedChallanHeader">
+            <End Role="WorkOrderReceivedChallanHeader" EntitySet="WorkOrderReceivedChallanHeaders" />
+            <End Role="WorkOrderReceivedChallanTax" EntitySet="WorkOrderReceivedChallanTaxes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testStoreContainer" CdmEntityContainer="MErpBillingEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="test.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CrteatedOn" ColumnName="CrteatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressTypes">
+            <EntityTypeMapping TypeName="test.AddressType">
+              <MappingFragment StoreEntitySet="AddressType">
+                <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseLogs">
+            <EntityTypeMapping TypeName="test.DatabaseLog">
+              <MappingFragment StoreEntitySet="DatabaseLog">
+                <ScalarProperty Name="DatabaseLogID" ColumnName="DatabaseLogID" />
+                <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+                <ScalarProperty Name="DatabaseUser" ColumnName="DatabaseUser" />
+                <ScalarProperty Name="Event" ColumnName="Event" />
+                <ScalarProperty Name="Schema" ColumnName="Schema" />
+                <ScalarProperty Name="Object" ColumnName="Object" />
+                <ScalarProperty Name="TSQL" ColumnName="TSQL" />
+                <ScalarProperty Name="XmlEvent" ColumnName="XmlEvent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="test.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="PersonTypeId" ColumnName="PersonTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+                <ScalarProperty Name="CreatByUserId" ColumnName="CreatByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonAddresses">
+            <EntityTypeMapping TypeName="test.PersonAddress">
+              <MappingFragment StoreEntitySet="PersonAddress">
+                <ScalarProperty Name="PersonAddressId" ColumnName="PersonAddressId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonContacts">
+            <EntityTypeMapping TypeName="test.PersonContact">
+              <MappingFragment StoreEntitySet="PersonContact">
+                <ScalarProperty Name="PersonContactId" ColumnName="PersonContactId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonTaxes">
+            <EntityTypeMapping TypeName="test.PersonTax">
+              <MappingFragment StoreEntitySet="PersonTax">
+                <ScalarProperty Name="PersonTaxId" ColumnName="PersonTaxId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonTypes">
+            <EntityTypeMapping TypeName="test.PersonType">
+              <MappingFragment StoreEntitySet="PersonType">
+                <ScalarProperty Name="PersonTypeID" ColumnName="PersonTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="test.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTypes">
+            <EntityTypeMapping TypeName="test.ProductType">
+              <MappingFragment StoreEntitySet="ProductType">
+                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+                <ScalarProperty Name="ProductType1" ColumnName="ProductType" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderDetails">
+            <EntityTypeMapping TypeName="test.PurchaseOrderDetail">
+              <MappingFragment StoreEntitySet="PurchaseOrderDetail">
+                <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+                <ScalarProperty Name="PurchaseOrderDetailID" ColumnName="PurchaseOrderDetailID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderHeaders">
+            <EntityTypeMapping TypeName="test.PurchaseOrderHeader">
+              <MappingFragment StoreEntitySet="PurchaseOrderHeader">
+                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+                <ScalarProperty Name="Freight" ColumnName="Freight" />
+                <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderTaxes">
+            <EntityTypeMapping TypeName="test.PurchaseOrderTax">
+              <MappingFragment StoreEntitySet="PurchaseOrderTax">
+                <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+                <ScalarProperty Name="PurchaseTaxId" ColumnName="PurchaseTaxId" />
+                <ScalarProperty Name="TaxRateId" ColumnName="TaxRateId" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseReceivedChallanDetails">
+            <EntityTypeMapping TypeName="test.PurchaseReceivedChallanDetail">
+              <MappingFragment StoreEntitySet="PurchaseReceivedChallanDetail">
+                <ScalarProperty Name="PurchaseReceivedChallanId" ColumnName="PurchaseReceivedChallanId" />
+                <ScalarProperty Name="PurchaseReceivedChallanDetailID" ColumnName="PurchaseReceivedChallanDetailID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseReceivedChallanHeaders">
+            <EntityTypeMapping TypeName="test.PurchaseReceivedChallanHeader">
+              <MappingFragment StoreEntitySet="PurchaseReceivedChallanHeader">
+                <ScalarProperty Name="PurchaseReceivedChallanId" ColumnName="PurchaseReceivedChallanId" />
+                <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="VendorChallanNo" ColumnName="VendorChallanNo" />
+                <ScalarProperty Name="VendorChallanDate" ColumnName="VendorChallanDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+                <ScalarProperty Name="Freight" ColumnName="Freight" />
+                <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseReceivedChallanTaxes">
+            <EntityTypeMapping TypeName="test.PurchaseReceivedChallanTax">
+              <MappingFragment StoreEntitySet="PurchaseReceivedChallanTax">
+                <ScalarProperty Name="PurchaseReceivedChallanTaxID" ColumnName="PurchaseReceivedChallanTaxID" />
+                <ScalarProperty Name="PurchaseReceivedChallanId" ColumnName="PurchaseReceivedChallanId" />
+                <ScalarProperty Name="TaxRateId" ColumnName="TaxRateId" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuotationDetails">
+            <EntityTypeMapping TypeName="test.QuotationDetail">
+              <MappingFragment StoreEntitySet="QuotationDetail">
+                <ScalarProperty Name="QuotationDetailNo" ColumnName="QuotationDetailNo" />
+                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
+                <ScalarProperty Name="ProductNo" ColumnName="ProductNo" />
+                <ScalarProperty Name="Quatity" ColumnName="Quatity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuotationHeaders">
+            <EntityTypeMapping TypeName="test.QuotationHeader">
+              <MappingFragment StoreEntitySet="QuotationHeader">
+                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
+                <ScalarProperty Name="QuotationDate" ColumnName="QuotationDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrderDetails">
+            <EntityTypeMapping TypeName="test.SalesOrderDetail">
+              <MappingFragment StoreEntitySet="SalesOrderDetail">
+                <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
+                <ScalarProperty Name="SalesOrderDetailID" ColumnName="SalesOrderDetailID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrderHeaders">
+            <EntityTypeMapping TypeName="test.SalesOrderHeader">
+              <MappingFragment StoreEntitySet="SalesOrderHeader">
+                <ScalarProperty Name="SalesOrderId" ColumnName="SalesOrderId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="SalesOrderNumber" ColumnName="SalesOrderNumber" />
+                <ScalarProperty Name="QuotationRef" ColumnName="QuotationRef" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+                <ScalarProperty Name="BillToAddressID" ColumnName="BillToAddressID" />
+                <ScalarProperty Name="ShipToAddressID" ColumnName="ShipToAddressID" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+                <ScalarProperty Name="Freight" ColumnName="Freight" />
+                <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrderTaxes">
+            <EntityTypeMapping TypeName="test.SalesOrderTax">
+              <MappingFragment StoreEntitySet="SalesOrderTax">
+                <ScalarProperty Name="SalesOrderTaxId" ColumnName="SalesOrderTaxId" />
+                <ScalarProperty Name="SalesOrderId" ColumnName="SalesOrderId" />
+                <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxRates">
+            <EntityTypeMapping TypeName="test.TaxRate">
+              <MappingFragment StoreEntitySet="TaxRate">
+                <ScalarProperty Name="TaxRateId" ColumnName="TaxRateId" />
+                <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
+                <ScalarProperty Name="TaxType" ColumnName="TaxType" />
+                <ScalarProperty Name="TaxRate1" ColumnName="TaxRate" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+                <ScalarProperty Name="CreateByUserId" ColumnName="CreateByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxTypes">
+            <EntityTypeMapping TypeName="test.TaxType">
+              <MappingFragment StoreEntitySet="TaxType">
+                <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ValueLength" ColumnName="ValueLength" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrderDetails">
+            <EntityTypeMapping TypeName="test.WorkOrderDetail">
+              <MappingFragment StoreEntitySet="WorkOrderDetail">
+                <ScalarProperty Name="WorkOrderID" ColumnName="WorkOrderID" />
+                <ScalarProperty Name="WorkOrderDetailID" ColumnName="WorkOrderDetailID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrderHeaders">
+            <EntityTypeMapping TypeName="test.WorkOrderHeader">
+              <MappingFragment StoreEntitySet="WorkOrderHeader">
+                <ScalarProperty Name="WorkOrderId" ColumnName="WorkOrderId" />
+                <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+                <ScalarProperty Name="Freight" ColumnName="Freight" />
+                <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrderReceivedChallanDetails">
+            <EntityTypeMapping TypeName="test.WorkOrderReceivedChallanDetail">
+              <MappingFragment StoreEntitySet="WorkOrderReceivedChallanDetail">
+                <ScalarProperty Name="WorkOrderReceivedChallanId" ColumnName="WorkOrderReceivedChallanId" />
+                <ScalarProperty Name="WorkOrderReceivedChallanDetailID" ColumnName="WorkOrderReceivedChallanDetailID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrderReceivedChallanHeaders">
+            <EntityTypeMapping TypeName="test.WorkOrderReceivedChallanHeader">
+              <MappingFragment StoreEntitySet="WorkOrderReceivedChallanHeader">
+                <ScalarProperty Name="WorkOrderReceivedChallanId" ColumnName="WorkOrderReceivedChallanId" />
+                <ScalarProperty Name="WorkOrderOrderID" ColumnName="WorkOrderOrderID" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="VendorChallanNo" ColumnName="VendorChallanNo" />
+                <ScalarProperty Name="VendorChallanDate" ColumnName="VendorChallanDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+                <ScalarProperty Name="Freight" ColumnName="Freight" />
+                <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedByUserId" ColumnName="ModifiedByUserId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrderReceivedChallanTaxes">
+            <EntityTypeMapping TypeName="test.WorkOrderReceivedChallanTax">
+              <MappingFragment StoreEntitySet="WorkOrderReceivedChallanTax">
+                <ScalarProperty Name="WorkOrderReceivedChallanTaxId" ColumnName="WorkOrderReceivedChallanTaxId" />
+                <ScalarProperty Name="WorkOrderReceivedChallanId" ColumnName="WorkOrderReceivedChallanId" />
+                <ScalarProperty Name="TasxTypeId" ColumnName="TasxTypeId" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkOrderTaxes">
+            <EntityTypeMapping TypeName="test.WorkOrderTax">
+              <MappingFragment StoreEntitySet="WorkOrderTax">
+                <ScalarProperty Name="WorkOrderTaxId" ColumnName="WorkOrderTaxId" />
+                <ScalarProperty Name="WorkOrderId" ColumnName="WorkOrderId" />
+                <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
+                <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

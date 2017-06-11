@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E785FD49-6923-4853-A8AE-CF1390CEDACB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MBilling.Core</RootNamespace>
+    <AssemblyName>MBilling.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Address.cs" />
+    <Compile Include="Data\AddressType.cs" />
+    <Compile Include="Data\DatabaseLog.cs" />
+    <Compile Include="Data\Person.cs" />
+    <Compile Include="Data\PersonAddress.cs" />
+    <Compile Include="Data\PersonContact.cs" />
+    <Compile Include="Data\PersonTax.cs" />
+    <Compile Include="Data\PersonType.cs" />
+    <Compile Include="Data\Product.cs" />
+    <Compile Include="Data\ProductType.cs" />
+    <Compile Include="Data\PurchaseOrderDetail.cs" />
+    <Compile Include="Data\PurchaseOrderHeader.cs" />
+    <Compile Include="Data\PurchaseOrderTax.cs" />
+    <Compile Include="Data\PurchaseReceivedChallanDetail.cs" />
+    <Compile Include="Data\PurchaseReceivedChallanHeader.cs" />
+    <Compile Include="Data\PurchaseReceivedChallanTax.cs" />
+    <Compile Include="Data\QuotationDetail.cs" />
+    <Compile Include="Data\QuotationHeader.cs" />
+    <Compile Include="Data\SalesOrderDetail.cs" />
+    <Compile Include="Data\SalesOrderHeader.cs" />
+    <Compile Include="Data\SalesOrderTax.cs" />
+    <Compile Include="Data\StateProvince.cs" />
+    <Compile Include="Data\TaxRate.cs" />
+    <Compile Include="Data\TaxType.cs" />
+    <Compile Include="Data\WorkOrderDetail.cs" />
+    <Compile Include="Data\WorkOrderHeader.cs" />
+    <Compile Include="Data\WorkOrderReceivedChallanDetail.cs" />
+    <Compile Include="Data\WorkOrderReceivedChallanHeader.cs" />
+    <Compile Include="Data\WorkOrderReceivedChallanTax.cs" />
+    <Compile Include="Data\WorkOrderTax.cs" />
+    <Compile Include="Domain\Person.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

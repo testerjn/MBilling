@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b29fd19547441eb98b69a31e88dab4e" Name="Diagram1">
+        <EntityTypeShape EntityType="test.Address" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.AddressType" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.DatabaseLog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.Person" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.PersonAddress" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.PersonContact" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.PersonTax" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.PersonType" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.Product" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.ProductType" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.PurchaseOrderDetail" Width="1.5" PointX="7.5" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.PurchaseOrderHeader" Width="1.5" PointX="5.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.PurchaseOrderTax" Width="1.5" PointX="7.5" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.PurchaseReceivedChallanDetail" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.PurchaseReceivedChallanHeader" Width="1.5" PointX="10.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.PurchaseReceivedChallanTax" Width="1.5" PointX="12.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.QuotationDetail" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.QuotationHeader" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.SalesOrderDetail" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.SalesOrderHeader" Width="1.5" PointX="12.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.SalesOrderTax" Width="1.5" PointX="15" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.TaxRate" Width="1.5" PointX="15.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.TaxType" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.WorkOrderDetail" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.WorkOrderHeader" Width="1.5" PointX="8.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.WorkOrderReceivedChallanDetail" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.WorkOrderReceivedChallanHeader" Width="1.5" PointX="10.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.WorkOrderReceivedChallanTax" Width="1.5" PointX="13" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="test.WorkOrderTax" Width="1.5" PointX="11" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="test.FK_PersonAddress_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PersonAddress_AddressType" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_Person_PersonType" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PersonAddress_PersonId" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PersonContactDetail_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PersonTax_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PurchaseOrderHeader_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PurchaseReceivedChallanHeader_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PersonTax_TaxType" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_Product_ProductType" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PurchaseOrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PurchaseOrderDetail_PurchaseOrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PurchaseReceivedChallanHeader_PurchaseOrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PurchaseTax_PurchaseOrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_PurchaseReceivedChallanTax_PurchaseReceivedChallanHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_SalesOrderTax_SalesOrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_WorkOrderTax_WorkOrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="test.FK_WorkOrderReceivedChallanTax_WorkOrderReceivedChallanHeader" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
