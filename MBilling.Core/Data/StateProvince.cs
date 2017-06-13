@@ -1,4 +1,4 @@
-﻿namespace MBilling.Core.Data
+﻿namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;

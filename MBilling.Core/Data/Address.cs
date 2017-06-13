@@ -7,19 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MBilling.Core.Data
+namespace MBilling.Core
 {
+    using General;
     using System;
     using System.Collections.Generic;
-    
-    public partial class Address
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+
+    public partial class Address : INotifyPropertyChanged, IObjectWithStateForEntity, ICloneable
     {
         
         public Address()
         {
             PersonAddresses = new HashSet<PersonAddress>();
         }
-    
+
+        [Display(Name = "Name")]
+        [Searchable]
         public int AddressID { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -27,13 +33,90 @@ namespace MBilling.Core.Data
         public string Town { get; set; }
         public int StateId { get; set; }
         public string PostalCode { get; set; }
-        public Nullable<int> CreatedByUserId { get; set; }
+
+        internal int _CreatedByUser;
+        public int CreatedByUserId
+        {
+            get
+            {
+                return _CreatedByUser;
+            }
+            set
+            {
+                _CreatedByUser = value;
+                OnPropertyChanged("CreatedByUser");
+            }
+        }
+
+        internal int _ModifiedByUser;
+        public int ModifiedByUserId
+        {
+            get
+            {
+                return _ModifiedByUser;
+            }
+            set
+            {
+                _ModifiedByUser = value;
+                OnPropertyChanged("CreatedByUser");
+            }
+        }
+
         public Nullable<System.DateTime> CrteatedOn { get; set; }
-        public Nullable<int> ModifiedByUserId { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<bool> IsActive { get; set; }
-    
-        
+
+        internal State _State;
+        public State State
+        {
+            get { return _State; }
+            set
+            {
+                _State = value;
+                OnPropertyChanged("State");
+            }
+        }
+
         public virtual ICollection<PersonAddress> PersonAddresses { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+                if (this.State == State.Unchanged)
+                {
+                    if (this.AddressID == 0)
+                    {
+                        this.State = State.Added;
+                    }
+                    else
+                        this.State = State.Modified;
+                }
+
+            }
+        }
+
+        public string SearchText
+        {
+            get
+            {
+                string _Temp = "";
+                foreach (var prop in this.GetType().GetProperties().Where(A => A.GetCustomAttributes(typeof(Searchable), true).Length != 0))
+                {
+                    _Temp = _Temp + "|" + prop.GetValue(this, null);
+                }
+                return _Temp;
+            }
+        }
+
+
+       
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }
