@@ -24,15 +24,105 @@ namespace MBilling.Core
             PersonAddresses = new HashSet<PersonAddress>();
         }
 
-        [Display(Name = "Name")]
-        [Searchable]
+        
         public int AddressID { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string Address3 { get; set; }
-        public string Town { get; set; }
-        public int StateId { get; set; }
-        public string PostalCode { get; set; }
+        
+        internal string _Address1;
+        [Display(Name = "Address1")]
+        [Searchable]
+        [Required (ErrorMessage="Address {0} is required")]
+        public string Address1 
+        { 
+         get
+            {
+                return _Address1;
+            }
+            set
+            {
+                _Address1 = value;
+                OnPropertyChanged("Address1");
+            } 
+        }
+        
+        internal string _Address2;
+        [Display(Name = "Address2")]
+        [Searchable]
+        public string Address2 
+        { 
+         get
+            {
+                return _Address2;
+            }
+            set
+            {
+                _Address2 = value;
+                OnPropertyChanged("Address2");
+            } 
+        }
+        
+        internal string _Address3;
+        public string Address3 
+        { 
+         get
+            {
+                return _Address3;
+            }
+            set
+            {
+                _Address3 = value;
+                OnPropertyChanged("Address3");
+            } 
+        }
+        
+        internal string _Town;
+        [Display(Name = "City")]
+        [Searchable]
+        [Required (ErrorMessage="Enter city name")]
+        public string Town 
+        { 
+         get
+            {
+                return _Town;
+            }
+            set
+            {
+                _Town = value;
+                OnPropertyChanged("Town");
+            } 
+        }
+        
+        [Display(Name = "StateName")]
+        [Searchable]
+        internal string _StateId;
+        public int StateId 
+        { 
+         get
+            {
+                return _StateId;
+            }
+            set
+            {
+                _StateId = value;
+                OnPropertyChanged("StateId");
+            } 
+        }
+        
+        internal string _PostalCode;
+        [Display(Name = "PostalCode")]
+        [Searchable]
+        [Required (ErrorMessage="Postal code {0} is required")]
+        public string PostalCode   
+        { 
+         get
+            {
+                return _PostalCode;
+            }
+            set
+            {
+                _PostalCode = value;
+                OnPropertyChanged("PostalCode");
+            } 
+        }
 
         internal int _CreatedByUser;
         public int CreatedByUserId
@@ -44,7 +134,7 @@ namespace MBilling.Core
             set
             {
                 _CreatedByUser = value;
-                OnPropertyChanged("CreatedByUser");
+                OnPropertyChanged("CreatedByUserId");
             }
         }
 
@@ -58,7 +148,7 @@ namespace MBilling.Core
             set
             {
                 _ModifiedByUser = value;
-                OnPropertyChanged("CreatedByUser");
+                OnPropertyChanged("CreatedByUserId");
             }
         }
 
