@@ -11,9 +11,11 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class QuotationHeader
     {
+        [Key]
         public int QuotationNo { get; set; }
         public Nullable<System.DateTime> QuotationDate { get; set; }
         public Nullable<int> CustomerId { get; set; }

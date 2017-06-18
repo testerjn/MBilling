@@ -11,7 +11,8 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PersonType
     {
         
@@ -19,7 +20,7 @@ namespace MBilling.Core
         {
             this.People = new HashSet<Person>();
         }
-    
+        [Key]
         public int PersonTypeID { get; set; }
         public string Name { get; set; }
         public System.Guid rowguid { get; set; }

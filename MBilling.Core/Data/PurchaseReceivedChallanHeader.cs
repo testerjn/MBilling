@@ -11,9 +11,11 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PurchaseReceivedChallanHeader
     {
+        [Key]
         public int PurchaseReceivedChallanId { get; set; }
         public int PurchaseOrderID { get; set; }
         public int PersonId { get; set; }

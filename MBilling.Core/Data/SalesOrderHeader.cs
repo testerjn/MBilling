@@ -11,7 +11,8 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SalesOrderHeader
     {
         
@@ -19,7 +20,8 @@ namespace MBilling.Core
         {
             this.SalesOrderTaxes = new HashSet<SalesOrderTax>();
         }
-    
+
+        [Key]
         public int SalesOrderId { get; set; }
         public Nullable<int> CustomerId { get; set; }
         public string SalesOrderNumber { get; set; }

@@ -11,9 +11,11 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DatabaseLog
     {
+        [Key]
         public int DatabaseLogID { get; set; }
         public System.DateTime PostTime { get; set; }
         public string DatabaseUser { get; set; }

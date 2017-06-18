@@ -44,6 +44,7 @@
             this.cmbStates = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.btnSearch = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnAddNew = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnClear = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.header1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.detailTab = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -62,7 +63,6 @@
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnClear = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.tabNav)).BeginInit();
             this.tabNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstTab)).BeginInit();
@@ -145,8 +145,10 @@
             this.grdTaxRste.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdTaxRste.Location = new System.Drawing.Point(0, 0);
             this.grdTaxRste.Name = "grdTaxRste";
+            this.grdTaxRste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdTaxRste.Size = new System.Drawing.Size(558, 227);
             this.grdTaxRste.TabIndex = 0;
+            this.grdTaxRste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTaxRste_CellContentClick);
             // 
             // pnlFind
             // 
@@ -237,6 +239,15 @@
             this.btnAddNew.TabIndex = 9;
             this.btnAddNew.Values.Text = "Add &new";
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(420, 3);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(90, 25);
+            this.btnClear.TabIndex = 10;
+            this.btnClear.Values.Text = "&Clear";
+            this.btnClear.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // header1
             // 
@@ -418,15 +429,6 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Values.Text = "&Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(420, 3);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(90, 25);
-            this.btnClear.TabIndex = 10;
-            this.btnClear.Values.Text = "&Clear";
-            this.btnClear.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // TaxRateView
             // 

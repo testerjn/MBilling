@@ -9,21 +9,180 @@
 
 namespace MBilling.Core
 {
+    using General;
     using System;
     using System.Collections.Generic;
-    
-    public partial class TaxRate
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Runtime.CompilerServices;
+
+    public partial class TaxRate : INotifyPropertyChanged, IObjectWithStateForEntity, ICloneable
     {
+        [Key]
+        // [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[Column("TaxRateId", TypeName = "uniqueidentifier")]
         public int TaxRateId { get; set; }
-        public int StateProvinceId { get; set; }
-        public Nullable<byte> TaxType { get; set; }
-        public decimal TaxRate1 { get; set; }
-        public string TaxName { get; set; }
-        public System.DateTime ApplyDate { get; set; }
-        public Nullable<int> CreateByUserId { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<int> ModifiedByUserId { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+
+        internal int _StateProvinceId;
+        [Display(Name = "State Name")]
+        [Searchable]
+        [Required(ErrorMessage = "State name {0} is required")]
+        public int StateProvinceId
+        {
+            get
+            {
+                return _StateProvinceId;
+            }
+            set
+            {
+                _StateProvinceId = value;
+                OnPropertyChanged("StateProvinceId");
+            }
+        }
+        internal byte _TaxType;
+        [Display(Name = "Tax Type")]
+        [Searchable]
+        [Required(ErrorMessage = "Tax type {0} is required")]
+        public byte TaxType
+        {
+            get
+            {
+                return _TaxType;
+            }
+            set
+            {
+                _TaxType = value;
+                OnPropertyChanged("TaxType");
+            }
+        }
+
+        internal decimal _TaxRate1;
+        [Display(Name = "Tax Rate")]
+        [Required(ErrorMessage = "Tax rate {0} is required")]
+        public decimal TaxRate1
+        {
+            get
+            {
+                return _TaxRate1;
+            }
+            set
+            {
+                _TaxRate1 = value;
+                OnPropertyChanged("TaxRate");
+            }
+        }
+
+        internal string _TaxName;
+        [Display(Name = "Tax Name")]
+        [Required(ErrorMessage = "Tax name {0} is required")]
+        [Searchable]
+        public string TaxName
+        {
+            get
+            {
+                return _TaxName;
+            }
+            set
+            {
+                _TaxName = value;
+                OnPropertyChanged("TaxName");
+            }
+        }
+
+        internal DateTime _ApplyDate;
+        [Display(Name = "Apply Date")]
+        [Required(ErrorMessage = "Date of tax applied {0} is required")]
+        [Searchable]
+        public System.DateTime ApplyDate
+        {
+            get
+            {
+                return _ApplyDate;
+            }
+            set
+            {
+                _ApplyDate = value;
+                OnPropertyChanged("ApplyDate");
+            }
+        }
+
+        internal Nullable<bool> _IsActive = true;
+        public Nullable<bool> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                _IsActive = value;
+                OnPropertyChanged("IsActive");
+            }
+        }
+
+
+        public State State
+        {
+            get
+            ;
+
+            set
+            ;
+        }
+
+        internal int _CreatedByUserId;
+        public int CreatedByUserId
+        {
+            get
+            {
+                return _CreatedByUserId;
+            }
+            set
+            {
+                _CreatedByUserId = value;
+                OnPropertyChanged("CreatedByUserId");
+            }
+        }
+
+        internal int _ModifiedByUserId;
+        public int ModifiedByUserId
+        {
+            get
+            {
+                return _ModifiedByUserId;
+            }
+            set
+            {
+                _ModifiedByUserId = value;
+                OnPropertyChanged("ModifiedByUserId");
+            }
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+                if (this.State == State.Unchanged)
+                {
+                    if (this.TaxRateId == 0)
+                    {
+                        this.State = State.Added;
+                    }
+                    else
+                        this.State = State.Modified;
+                }
+
+            }
+        }
+
     }
 }

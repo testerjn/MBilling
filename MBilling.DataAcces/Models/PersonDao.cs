@@ -1,4 +1,4 @@
-﻿using MBilling.Core.Data;
+﻿using MBilling.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

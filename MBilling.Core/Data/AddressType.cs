@@ -11,7 +11,8 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class AddressType
     {
         
@@ -19,7 +20,7 @@ namespace MBilling.Core
         {
             this.PersonAddresses = new HashSet<PersonAddress>();
         }
-    
+        [Key]
         public int AddressTypeID { get; set; }
         public string Name { get; set; }
         public System.Guid rowguid { get; set; }

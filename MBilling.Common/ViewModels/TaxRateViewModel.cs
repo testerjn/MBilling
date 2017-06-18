@@ -1,4 +1,4 @@
-﻿using MBilling.Core.Data;
+﻿using MBilling.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,27 +9,23 @@ using System.Threading.Tasks;
 
 namespace MBilling.Common.ViewModels
 {
-    public class TaxRateViewModel : INotifyPropertyChanged
+    public class TaxRateViewModel : ViewModel<TaxRate>
     {
+        //public event PropertyChangedEventHandler PropertyChanged;
+
+        //protected virtual void OnPropertyChanged(string propertyName)
+        //{
+        //    PropertyChangedEventHandler handler = PropertyChanged;
+        //    if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        //}
         private readonly TaxRate m_TaxRateData;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        // This method is called by the Set accessor of each property.
-        // The CallerMemberName attribute that is applied to the optional propertyName
-        // parameter causes the property name of the caller to be substituted as an argument.
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
         public TaxRateViewModel(TaxRate _TaxRate)
+            : base(_TaxRate)
         {
             m_TaxRateData = _TaxRate;
         }
+
         public int StateProvinceId
         {
             get { return m_TaxRateData.StateProvinceId; }
@@ -38,11 +34,11 @@ namespace MBilling.Common.ViewModels
                 if (value != m_TaxRateData.StateProvinceId)
                 {
                     m_TaxRateData.StateProvinceId = value;
-                    NotifyPropertyChanged();
+                    RaisePropertyChangedFor("StateProvinceId");
                 }
             }
         }
-        public Nullable<byte> TaxType
+        public byte TaxType
         {
             get { return m_TaxRateData.TaxType; }
             set { m_TaxRateData.TaxType = value; }
@@ -62,12 +58,12 @@ namespace MBilling.Common.ViewModels
             get { return m_TaxRateData.ApplyDate; }
             set { m_TaxRateData.ApplyDate = value; }
         }
-        public Nullable<int> CreateByUserId
+        public int CreateByUserId
         {
-            get { return m_TaxRateData.CreateByUserId; }
-            set { m_TaxRateData.CreateByUserId = value; }
+            get { return m_TaxRateData.CreatedByUserId; }
+            set { m_TaxRateData.CreatedByUserId = value; }
         }
-        public Nullable<int> ModifiedByUserId
+        public int ModifiedByUserId
         {
             get { return m_TaxRateData.ModifiedByUserId; }
             set { m_TaxRateData.ModifiedByUserId = value; }

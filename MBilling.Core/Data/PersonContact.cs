@@ -11,9 +11,11 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PersonContact
     {
+        [Key]
         public int PersonContactId { get; set; }
         public int PersonId { get; set; }
         public string ContactName { get; set; }

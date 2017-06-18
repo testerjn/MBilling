@@ -11,7 +11,9 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Product
     {
         
@@ -19,8 +21,13 @@ namespace MBilling.Core
         {
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
         }
-    
+
+        [Key]
+        [Column(Order = 1)]
         public int ProductId { get; set; }
+
+        [Key,ForeignKey("ProductType")]
+        [Column(Order = 2)]
         public int ProductTypeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

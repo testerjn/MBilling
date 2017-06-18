@@ -11,7 +11,8 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Person
     {
         
@@ -23,7 +24,7 @@ namespace MBilling.Core
             this.PurchaseOrderHeaders = new HashSet<PurchaseOrderHeader>();
             this.PurchaseReceivedChallanHeaders = new HashSet<PurchaseReceivedChallanHeader>();
         }
-    
+        [Key]
         public int PersonId { get; set; }
         public int PersonTypeId { get; set; }
         public string Name { get; set; }

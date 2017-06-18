@@ -24,7 +24,7 @@ namespace MBilling.Core
             PersonAddresses = new HashSet<PersonAddress>();
         }
 
-        
+        [Key]
         public int AddressID { get; set; }
         
         internal string _Address1;
@@ -91,9 +91,10 @@ namespace MBilling.Core
             } 
         }
         
+        
+        internal int _StateId;
         [Display(Name = "StateName")]
         [Searchable]
-        internal string _StateId;
         public int StateId 
         { 
          get

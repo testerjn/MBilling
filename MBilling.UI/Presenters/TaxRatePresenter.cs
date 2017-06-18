@@ -1,6 +1,6 @@
 ﻿using MBilling.Common.Interfaces;
 using MBilling.Common.ViewModels;
-using MBilling.Core.Data;
+using MBilling.Core;
 using MBilling.DataAcces.Models;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace MBilling.UI.Presenters
     public class TaxRatePresenter
     {
         private ITaxRateView m_view = null;
-        private TaxRateDao m_taxRateDao;
+        private TaxRateDao m_taxRateDao =new TaxRateDao();
         private TaxRateViewModel m_viewModel;
         private IEnumerable<TaxRateViewModel> m_TaxRateViewModelList;
         private Dictionary<int, string> m_StateViewModelList;
@@ -24,7 +24,8 @@ namespace MBilling.UI.Presenters
             PopulateData();
             TaxRate taxRateDataEntity = new TaxRate();
             TaxRateViewModel taxRateViewModel = new TaxRateViewModel(taxRateDataEntity);
-            m_view.ShowTaxRate(taxRateViewModel);
+            m_view.MyModel = m_viewModel;
+            m_view.ShowModel(taxRateViewModel);
         }
         public TaxRatePresenter(ITaxRateView p_view, TaxRateDao p_taxRateDao)
         {
@@ -51,7 +52,7 @@ namespace MBilling.UI.Presenters
 
             m_TaxRateViewModelList = taxRateViewModel;
 
-            m_view.ShowAllTaxRate(m_TaxRateViewModelList);
+            m_view.GetAll(m_TaxRateViewModelList);
         }
         private void GetAllStateProvince()
         {
@@ -83,14 +84,19 @@ namespace MBilling.UI.Presenters
 
             m_TaxRateViewModelList = taxRateViewModel;
 
-            m_view.ShowAllTaxRate(m_TaxRateViewModelList);
+            m_view.GetAll(m_TaxRateViewModelList);
         }
 
+        public void EditTaxRateClicked()
+        {
+            m_viewModel = m_view.MyModel;
+            m_view.ShowModel(m_viewModel);
+        }
         public void AddTaxRateClicked()
         {
             TaxRate taxRateDataEntity = new TaxRate();
             m_viewModel = new TaxRateViewModel(taxRateDataEntity);
-            m_view.ShowTaxRate(m_viewModel);
+            m_view.ShowModel(m_viewModel);
         }
         public void AddTaxRate()
         {
@@ -117,7 +123,8 @@ namespace MBilling.UI.Presenters
             else
             {
                 string strMessages = String.Join(Environment.NewLine, lstMessages.Select(a => a.ToString()));
-                m_view.ShowError(strMessages);
+                m_view.Message = strMessages;
+                m_view.ShowError();
             }
         }
 

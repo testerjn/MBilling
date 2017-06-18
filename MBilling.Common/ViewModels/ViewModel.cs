@@ -9,33 +9,49 @@ using System.Threading.Tasks;
 
 namespace MBilling.Common.ViewModels
 {
-    public abstract class ViewModel<M> : IViewModel<M> where M : class
+    public abstract class ViewModel<TEntity> : INotifyPropertyChanged where TEntity : class 
     {
-        public ViewModel(M model) { Model = model; }
-
-        public virtual M Model
+        protected ViewModel(TEntity model)
         {
-            get { return model; }
-            set { setModel(value); }
+            if (model == null) throw new ArgumentNullException("model");
+            this.model = model;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        //protected virtual void RaisePropertyChangedFor(Expression<Func<M, object>> propertyExpression)
-        //{
-        //    MemberExpression expression = propertyExpression.Body as MemberExpression;
-        //    if (expression == null)
-        //            return;
-        //    RaisePropertyChangedFor(expression.Member.Name);
-        //}
+        public TEntity Model { get { return model; } set { setNonNullModel(value); } }
 
-        private void setModel(M value)
+        protected virtual void RaisePropertyChangedFor(
+            Expression<Func<TEntity, object>> propertyExpression)
         {
-            if (value == null) throw new ArgumentNullException("Model");
-            model = value;
-            //raisePropertyChangedFor("Model");
+            var propertyName = propertyExpression.GetType().Name;
+            RaisePropertyChangedFor(propertyName);
         }
 
-        private M model;
+        protected void RaisePropertyChangedFor(string propertyName)
+        {
+            if (propertyName == null)
+            {
+                throw new ArgumentNullException("propertyName");
+            }
+
+            var handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private void setNonNullModel(TEntity value)
+        {
+            if (value != null)
+            {
+                model = value;
+                RaisePropertyChangedFor("Model");
+            }
+        }
+
+        private TEntity model;
+
     }
 }

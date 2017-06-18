@@ -19,6 +19,25 @@ namespace MBilling.UI.Views
     {
         private TaxRatePresenter m_presenter;
 
+        #region Properties
+        public string Message
+        {
+            get; set;
+        }
+        private TaxRateViewModel _TaxRateViewModel;
+        public TaxRateViewModel MyModel
+        {
+            get { return _TaxRateViewModel; }
+            set { _TaxRateViewModel = value; }
+        }
+
+        public string Title
+        {
+            get; set;
+        }
+        #endregion
+
+        #region Constructor
         public TaxRateView()
         {
             InitializeComponent();
@@ -30,8 +49,10 @@ namespace MBilling.UI.Views
 
             m_presenter = new TaxRatePresenter(this, dao);
         }
+        #endregion
 
-        public void ShowAllTaxRate(IEnumerable<TaxRateViewModel> taxRateViewModelList)
+        #region Method
+        public void GetAll(IEnumerable<TaxRateViewModel> taxRateViewModelList)
         {
             grdTaxRste.DataSource = taxRateViewModelList;
         }
@@ -39,7 +60,7 @@ namespace MBilling.UI.Views
         {
             cmbStateName.DisplayMember = "FullName";
             cmbStateName.ValueMember = "StateId";
-            cmbStateName.DataSource = new BindingSource(lstStateData, null); 
+            cmbStateName.DataSource = new BindingSource(lstStateData, null);
             cmbStateName.DataSource = new BindingSource(lstStateData, null);
         }
 
@@ -47,27 +68,17 @@ namespace MBilling.UI.Views
         {
             taxRateBindingSource.EndEdit();
         }
-        public void ReadUserInput(TaxRateViewModel taxRateViewModel)
-        {
-            taxRateViewModel.TaxName = txtTaxName.Text;
-            taxRateViewModel.ApplyDate = dtApplydate.Value;
-            taxRateViewModel.TaxRate1 = nmTaxRate.Value;
-            taxRateViewModel.IsActive = chkActive.Checked;
-            taxRateViewModel.StateProvinceId = (int)cmbStateName.SelectedValue;
-            taxRateViewModel.CreateByUserId = 1;
-            taxRateViewModel.ModifiedByUserId = 1;
-        }
 
-        public void ShowTaxRate(TaxRateViewModel taxRateViewModel)
+        public void ShowModel(TaxRateViewModel taxRateViewModel)
         {
             taxRateBindingSource.DataSource = taxRateViewModel;
         }
 
-        public void ShowError(string message)
+        public void ShowError()
         {
-            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
+        #endregion
 
         #region Events
         private void btnSave_Click(object sender, EventArgs e)
@@ -91,6 +102,28 @@ namespace MBilling.UI.Views
             m_presenter.SearchTaxRate();
         }
 
+        private void grdTaxRste_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+            {
+                ClearControls();
+                tabNav.SelectedPage = detailTab;
+                MyModel = grdTaxRste.SelectedRows.Cast<TaxRateViewModel>().FirstOrDefault();
+                m_presenter.EditTaxRateClicked();
+            }
+        }
+
+        public void SearchModel(IEnumerable<TaxRateViewModel> taxRateViewModelList)
+        {
+            grdTaxRste.DataSource = taxRateViewModelList;
+        }
+        public void ClearControls()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
+
+     
     }
 }

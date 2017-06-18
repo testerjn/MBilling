@@ -11,9 +11,11 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class QuotationDetail
     {
+        [Key]
         public int QuotationDetailNo { get; set; }
         public int QuotationNo { get; set; }
         public Nullable<int> ProductNo { get; set; }

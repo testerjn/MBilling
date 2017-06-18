@@ -11,10 +11,13 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PurchaseOrderTax
     {
+        
         public int PurchaseOrderID { get; set; }
+        [Key]
         public int PurchaseTaxId { get; set; }
         public int TaxRateId { get; set; }
         public decimal LineTotal { get; set; }

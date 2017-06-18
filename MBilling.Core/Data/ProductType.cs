@@ -11,9 +11,11 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ProductType
     {
+        [Key]
         public int ProductTypeId { get; set; }
         public string ProductType1 { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }

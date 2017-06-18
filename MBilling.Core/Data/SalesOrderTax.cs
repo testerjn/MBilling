@@ -11,9 +11,11 @@ namespace MBilling.Core
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SalesOrderTax
     {
+        [Key]
         public int SalesOrderTaxId { get; set; }
         public int SalesOrderId { get; set; }
         public int TaxTypeId { get; set; }

@@ -40,8 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Interfaces\ITaxRateView.cs" />
-    <Compile Include="Interfaces\IViewModel.cs" />
+    <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\TaxRateViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
