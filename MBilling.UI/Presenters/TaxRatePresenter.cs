@@ -14,9 +14,10 @@ namespace MBilling.UI.Presenters
     {
         private ITaxRateView m_view = null;
         private TaxRateDao m_taxRateDao =new TaxRateDao();
+        private StateProvinceDao m_stateProvinceDao = new StateProvinceDao();
         private TaxRateViewModel m_viewModel;
         private IEnumerable<TaxRateViewModel> m_TaxRateViewModelList;
-        private Dictionary<int, string> m_StateViewModelList;
+        private IEnumerable<StateProvienceModel> m_StateViewModelList;
 
         public TaxRatePresenter(ITaxRateView p_view)
         {
@@ -54,16 +55,12 @@ namespace MBilling.UI.Presenters
 
             m_view.GetAll(m_TaxRateViewModelList);
         }
-        private void GetAllStateProvince()
+        private async void GetAllStateProvince()
         {
-            Dictionary<int, string> s1 = new Dictionary<int, string>();
-            s1.Add(1,"MH");
-            s1.Add(2, "GJ");
-            s1.Add(3, "MP");
-            s1.Add(4, "UP");
-            s1.Add(5, "KN");
-
-            m_StateViewModelList = s1;
+            IEnumerable<StateProvince> stateEntityList = await m_stateProvinceDao.GetAll();
+            IEnumerable<StateProvienceModel> stateViewModel =
+                SResolveViewModelArray(stateEntityList);
+            m_StateViewModelList = stateViewModel;
             m_view.ShowStateProvince(m_StateViewModelList);
         }
         private IEnumerable<TaxRateViewModel> ResolveViewModelArray(IEnumerable<TaxRate> taxRateEntityList)
@@ -71,6 +68,14 @@ namespace MBilling.UI.Presenters
             foreach (TaxRate taxRateEntity in taxRateEntityList)
             {
                 yield return new TaxRateViewModel(taxRateEntity);
+            }
+        }
+
+        private IEnumerable<StateProvienceModel> SResolveViewModelArray(IEnumerable<StateProvince> taxRateEntityList)
+        {
+            foreach (StateProvince taxRateEntity in taxRateEntityList)
+            {
+                yield return new StateProvienceModel(taxRateEntity);
             }
         }
 

@@ -54,13 +54,18 @@ namespace MBilling.UI.Views
         #region Method
         public void GetAll(IEnumerable<TaxRateViewModel> taxRateViewModelList)
         {
-            grdTaxRste.DataSource = taxRateViewModelList;
+            BindingSource _BindingSource = new BindingSource();
+            _BindingSource.DataSource = taxRateViewModelList.ToList();
+            grdTaxRste.DataSource = _BindingSource;
+            grdTaxRste.ClearSelection();
         }
-        public void ShowStateProvince(Dictionary<int, string> lstStateData)
+        public void ShowStateProvince(IEnumerable<StateProvienceModel> lstStateData)
         {
             cmbStateName.DisplayMember = "FullName";
             cmbStateName.ValueMember = "StateId";
-            cmbStateName.DataSource = new BindingSource(lstStateData, null);
+            cmbStates.DisplayMember = "FullName";
+            cmbStates.ValueMember = "StateId";
+            cmbStates.DataSource = new BindingSource(lstStateData, null);
             cmbStateName.DataSource = new BindingSource(lstStateData, null);
         }
 
@@ -95,6 +100,7 @@ namespace MBilling.UI.Views
         {
             tabNav.SelectedPage = detailTab;
             m_presenter.AddTaxRateClicked();
+            dtApplydate.Value = DateTime.Today;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -106,9 +112,13 @@ namespace MBilling.UI.Views
         {
             if (e.RowIndex > 0)
             {
-                ClearControls();
+                // ClearControls();
                 tabNav.SelectedPage = detailTab;
-                MyModel = grdTaxRste.SelectedRows.Cast<TaxRateViewModel>().FirstOrDefault();
+                var check = grdTaxRste.SelectedRows
+                            .OfType<DataGridViewRow>()
+                            .Cast<TaxRateViewModel>()
+                            .Select(row => (TaxRateViewModel)row);
+                MyModel = check.FirstOrDefault();
                 m_presenter.EditTaxRateClicked();
             }
         }
@@ -124,6 +134,6 @@ namespace MBilling.UI.Views
 
         #endregion
 
-     
+
     }
 }

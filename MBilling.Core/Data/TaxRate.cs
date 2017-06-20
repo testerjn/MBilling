@@ -20,8 +20,7 @@ namespace MBilling.Core
     public partial class TaxRate : INotifyPropertyChanged, IObjectWithStateForEntity, ICloneable
     {
         [Key]
-        // [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //[Column("TaxRateId", TypeName = "uniqueidentifier")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TaxRateId { get; set; }
 
         internal int _StateProvinceId;
@@ -59,6 +58,7 @@ namespace MBilling.Core
 
         internal decimal _TaxRate1;
         [Display(Name = "Tax Rate")]
+        [Column(name: "TaxRate")]
         [Required(ErrorMessage = "Tax rate {0} is required")]
         public decimal TaxRate1
         {
@@ -121,16 +121,6 @@ namespace MBilling.Core
             }
         }
 
-
-        public State State
-        {
-            get
-            ;
-
-            set
-            ;
-        }
-
         internal int _CreatedByUserId;
         public int CreatedByUserId
         {
@@ -156,6 +146,21 @@ namespace MBilling.Core
             {
                 _ModifiedByUserId = value;
                 OnPropertyChanged("ModifiedByUserId");
+            }
+        }
+
+        internal State _state;
+        [NotMapped]
+        public State State
+        {
+            get
+            {
+                return _state;
+            }
+
+            set
+            {
+                _state = value;
             }
         }
 

@@ -14,7 +14,7 @@ namespace MBilling.Common.Interfaces
         //void ShowError(string message);
         //void SearchTaxRate(TaxRateViewModel taxRateViewModel);
         void ReadUserInput();
-        void ShowStateProvince(Dictionary<int,string> lstStateData);
+        void ShowStateProvince(IEnumerable<StateProvienceModel> lstStateData);
         //void Close();
 
     }

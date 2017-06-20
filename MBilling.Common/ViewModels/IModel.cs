@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MBilling.Common.Interfaces
+namespace MBilling.Common.ViewModels
 {
-    public interface IViewModel<M> : INotifyPropertyChanged where M : class
+    public interface IModel : INotifyPropertyChanged
     {
-        M Model { get; set; }
     }
 }

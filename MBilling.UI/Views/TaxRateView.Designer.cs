@@ -141,14 +141,23 @@
             // 
             // grdTaxRste
             // 
+            this.grdTaxRste.AllowUserToAddRows = false;
+            this.grdTaxRste.AllowUserToDeleteRows = false;
+            this.grdTaxRste.AllowUserToOrderColumns = true;
+            this.grdTaxRste.AllowUserToResizeRows = false;
             this.grdTaxRste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdTaxRste.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdTaxRste.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.grdTaxRste.Location = new System.Drawing.Point(0, 0);
+            this.grdTaxRste.MultiSelect = false;
             this.grdTaxRste.Name = "grdTaxRste";
+            this.grdTaxRste.ReadOnly = true;
+            this.grdTaxRste.RowHeadersVisible = false;
             this.grdTaxRste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdTaxRste.Size = new System.Drawing.Size(558, 227);
             this.grdTaxRste.TabIndex = 0;
             this.grdTaxRste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTaxRste_CellContentClick);
+            this.grdTaxRste.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTaxRste_CellContentClick);
             // 
             // pnlFind
             // 
