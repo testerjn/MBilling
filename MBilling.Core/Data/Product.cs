@@ -9,38 +9,185 @@
 
 namespace MBilling.Core
 {
+    using General;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Runtime.CompilerServices;
 
-    public partial class Product
+    public partial class Product : INotifyPropertyChanged, IObjectWithStateForEntity, ICloneable
     {
         
         public Product()
         {
-            this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
+            //this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
         }
 
         [Key]
-        [Column(Order = 1)]
+        [Column(Order =1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductId { get; set; }
 
         [Key,ForeignKey("ProductType")]
         [Column(Order = 2)]
         public int ProductTypeId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Size { get; set; }
-        public string Unit { get; set; }
-        public Nullable<int> CreateByUserId { get; set; }
-        public Nullable<System.DateTime> CreateOn { get; set; }
-        public Nullable<int> ModifiedByUserId { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-    
+        internal string _Name;
+        [Display(Name = "Product Name")]
+        [Column(name: "Name")]
+        [Required(ErrorMessage = "Product Name is required")]
+        public string Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                _Name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        internal string _Description;
+        [Display(Name = "Description")]
+        [Column(name: "Description")]
+        [Required(ErrorMessage = "Product Description is required")]
+        public string Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                _Description = value;
+                OnPropertyChanged("Description");
+            }
+        }
+
+        internal string _Size;
+        [Display(Name = "Size")]
+        [Column(name: "Size")]
+        [Required(ErrorMessage = "Product Size is required")]
+        public string Size
+        {
+            get
+            {
+                return _Size;
+            }
+            set
+            {
+                _Size = value;
+                OnPropertyChanged("Size");
+            }
+        }
+
+        internal string _Unit;
+        [Display(Name = "Unit")]
+        [Column(name: "Unit")]
+        [Required(ErrorMessage = "Product Unit is required")]
+        public string Unit
+        {
+            get
+            {
+                return _Unit;
+            }
+            set
+            {
+                _Unit = value;
+                OnPropertyChanged("Unit");
+            }
+        }
+
+
+        internal Nullable<bool> _IsActive = true;
+        public Nullable<bool> IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                _IsActive = value;
+                OnPropertyChanged("IsActive");
+            }
+        }
+
+        internal int _CreatedByUserId;
+        public int CreatedByUserId
+        {
+            get
+            {
+                return _CreatedByUserId;
+            }
+            set
+            {
+                _CreatedByUserId = value;
+                OnPropertyChanged("CreatedByUserId");
+            }
+        }
+
+        internal int _ModifiedByUserId;
+        public int ModifiedByUserId
+        {
+            get
+            {
+                return _ModifiedByUserId;
+            }
+            set
+            {
+                _ModifiedByUserId = value;
+                OnPropertyChanged("ModifiedByUserId");
+            }
+        }
+
+        internal State _state;
+        [NotMapped]
+        public State State
+        {
+            get
+            {
+                return _state;
+            }
+
+            set
+            {
+                _state = value;
+                OnPropertyChanged("State");
+            }
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+                if (this.State == State.Unchanged)
+                {
+                    if (this.ProductId == 0)
+                    {
+                        this.State = State.Added;
+                    }
+                    else
+                        this.State = State.Modified;
+                }
+
+            }
+        }
+
+        [ForeignKey("ProductTypeId")]
         public virtual ProductType ProductType { get; set; }
         
-        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
+        //public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
     }
 }

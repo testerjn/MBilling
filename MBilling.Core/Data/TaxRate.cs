@@ -11,7 +11,6 @@ namespace MBilling.Core
 {
     using General;
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -19,14 +18,25 @@ namespace MBilling.Core
 
     public partial class TaxRate : INotifyPropertyChanged, IObjectWithStateForEntity, ICloneable
     {
+        internal int _TaxRateId;
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int TaxRateId { get; set; }
+        public int TaxRateId {
+            get
+            {
+                return _TaxRateId;
+            }
+            set
+            {
+                _TaxRateId = value;
+                OnPropertyChanged("TaxRateId");
+            }
+        }
 
         internal int _StateProvinceId;
         [Display(Name = "State Name")]
         [Searchable]
-        [Required(ErrorMessage = "State name {0} is required")]
+        [Required(ErrorMessage = "State name is required")]
         public int StateProvinceId
         {
             get
@@ -59,7 +69,7 @@ namespace MBilling.Core
         internal decimal _TaxRate1;
         [Display(Name = "Tax Rate")]
         [Column(name: "TaxRate")]
-        [Required(ErrorMessage = "Tax rate {0} is required")]
+        [Required(ErrorMessage = "Tax rate is required")]
         public decimal TaxRate1
         {
             get
@@ -75,7 +85,7 @@ namespace MBilling.Core
 
         internal string _TaxName;
         [Display(Name = "Tax Name")]
-        [Required(ErrorMessage = "Tax name {0} is required")]
+        [Required(ErrorMessage = "Tax name is required")]
         [Searchable]
         public string TaxName
         {
@@ -161,6 +171,7 @@ namespace MBilling.Core
             set
             {
                 _state = value;
+                OnPropertyChanged("State");
             }
         }
 

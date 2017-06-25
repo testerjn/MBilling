@@ -40,7 +40,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.stxtName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.cmbStates = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.btnSearch = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnAddNew = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -92,6 +92,8 @@
             // 
             // tabNav
             // 
+            this.tabNav.AllowPageReorder = false;
+            this.tabNav.Bar.ItemOrientation = ComponentFactory.Krypton.Toolkit.ButtonOrientation.FixedTop;
             this.tabNav.Bar.TabBorderStyle = ComponentFactory.Krypton.Toolkit.TabBorderStyle.OneNote;
             this.tabNav.Bar.TabStyle = ComponentFactory.Krypton.Toolkit.TabStyle.OneNote;
             this.tabNav.Button.ButtonDisplayLogic = ComponentFactory.Krypton.Navigator.ButtonDisplayLogic.None;
@@ -179,7 +181,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel6, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.kryptonTextBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.stxtName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.cmbStates, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnSearch, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnAddNew, 2, 1);
@@ -211,16 +213,16 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Name";
             // 
-            // kryptonTextBox1
+            // stxtName
             // 
-            this.kryptonTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.stxtName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonTextBox1.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon;
-            this.kryptonTextBox1.Location = new System.Drawing.Point(142, 3);
-            this.kryptonTextBox1.Name = "kryptonTextBox1";
-            this.kryptonTextBox1.Size = new System.Drawing.Size(133, 20);
-            this.kryptonTextBox1.TabIndex = 1;
+            this.stxtName.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon;
+            this.stxtName.Location = new System.Drawing.Point(142, 3);
+            this.stxtName.Name = "stxtName";
+            this.stxtName.Size = new System.Drawing.Size(133, 20);
+            this.stxtName.TabIndex = 0;
             // 
             // cmbStates
             // 
@@ -229,14 +231,14 @@
             this.cmbStates.Location = new System.Drawing.Point(142, 37);
             this.cmbStates.Name = "cmbStates";
             this.cmbStates.Size = new System.Drawing.Size(133, 21);
-            this.cmbStates.TabIndex = 7;
+            this.cmbStates.TabIndex = 1;
             // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(281, 3);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(90, 25);
-            this.btnSearch.TabIndex = 8;
+            this.btnSearch.TabIndex = 2;
             this.btnSearch.Values.Text = "&Search";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -245,7 +247,7 @@
             this.btnAddNew.Location = new System.Drawing.Point(281, 37);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(90, 25);
-            this.btnAddNew.TabIndex = 9;
+            this.btnAddNew.TabIndex = 4;
             this.btnAddNew.Values.Text = "Add &new";
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
@@ -254,7 +256,7 @@
             this.btnClear.Location = new System.Drawing.Point(420, 3);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(90, 25);
-            this.btnClear.TabIndex = 10;
+            this.btnClear.TabIndex = 3;
             this.btnClear.Values.Text = "&Clear";
             this.btnClear.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -386,6 +388,7 @@
             // 
             // dtApplydate
             // 
+            this.dtApplydate.CalendarTodayDate = new System.DateTime(2009, 8, 20, 0, 0, 0, 0);
             this.dtApplydate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.taxRateBindingSource, "ApplyDate", true));
             this.dtApplydate.Location = new System.Drawing.Point(144, 141);
             this.dtApplydate.Name = "dtApplydate";
@@ -403,7 +406,7 @@
             // 
             // cmbStateName
             // 
-            this.cmbStateName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taxRateBindingSource, "StateProvinceId", true));
+            this.cmbStateName.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.taxRateBindingSource, "StateProvinceId", true));
             this.cmbStateName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStateName.DropDownWidth = 191;
             this.cmbStateName.Location = new System.Drawing.Point(144, 49);
@@ -490,7 +493,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlFind;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox stxtName;
         private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup header1;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup buttonSpecHeaderGroup1;
         private ComponentFactory.Krypton.Navigator.KryptonPage detailTab;

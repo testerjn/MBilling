@@ -11,51 +11,51 @@ namespace MBilling.DataAcces.Models
     public class ProductDao
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
-        private Repository<ProductDao> ProductDaoDaoRepository;
+        private Repository<Product> ProductRepository;
 
         public ProductDao()
         {
-            ProductDaoDaoRepository = unitOfWork.Repository<ProductDao>();
+            ProductRepository = unitOfWork.Repository<Product>();
         }
 
-        public bool Validate(ProductDao _ProductDao, out List<string> lstMessages)
+        public bool Validate(Product _ProductDao, out List<string> lstMessages)
         {
-            return ProductDaoDaoRepository.Validate(_ProductDao, out lstMessages);
+            return ProductRepository.Validate(_ProductDao, out lstMessages);
         }
 
-        public int Insert(ProductDao _ProductDao)
+        public int Insert(Product _ProductDao)
         {
-            return ProductDaoDaoRepository.Insert(_ProductDao);
+            return ProductRepository.Insert(_ProductDao);
         }
 
-        public int Update(ProductDao _ProductDao)
+        public int Update(Product _ProductDao)
         {
-            return ProductDaoDaoRepository.Update(_ProductDao);
+            return ProductRepository.Update(_ProductDao);
         }
 
-        public int Delete(ProductDao _ProductDao)
+        public int Delete(Product _ProductDao)
         {
-            return ProductDaoDaoRepository.Delete(_ProductDao);
+            return ProductRepository.Delete(_ProductDao);
         }
 
-        public async Task<ProductDao> GetById(int _id)
+        public async Task<Product> GetById(int _id)
         {
-            return await ProductDaoDaoRepository.GetById(_id);
+            return await ProductRepository.GetById(_id);
         }
 
-        public async Task<IEnumerable<ProductDao>> GetAll()
+        public async Task<IEnumerable<Product>> GetAll()
         {
-            return await ProductDaoDaoRepository.GetAll();
+            return await ProductRepository.GetAll();
         }
 
-        public async Task<IEnumerable<ProductDao>> FindBy(Expression<Func<ProductDao, bool>> predicate)
+        public async Task<IEnumerable<Product>> FindBy(Expression<Func<Product, bool>> predicate)
         {
-            return await ProductDaoDaoRepository.FindBy(predicate);
+            return await ProductRepository.FindBy(predicate);
         }
 
-        public async Task<IEnumerable<ProductDao>> GetAllBy(Expression<Func<ProductDao, bool>> filter = null, Func<IEnumerable<ProductDao>, IOrderedEnumerable<ProductDao>> orderBy = null)
+        public async Task<IEnumerable<Product>> GetAllBy(Expression<Func<Product, bool>> filter = null, Func<IEnumerable<ProductDao>, IOrderedEnumerable<ProductDao>> orderBy = null)
         {
-            return await ProductDaoDaoRepository.GetAllBy(filter, orderBy);
+            return await ProductRepository.GetAllBy(filter, orderBy);
         }
 
     }

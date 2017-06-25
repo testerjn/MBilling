@@ -1,17 +1,14 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using MBilling.Common.Interfaces;
-using MBilling.UI.Presenters;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MBilling.Common.ViewModels;
 using MBilling.DataAcces.Models;
+using MBilling.Core.Domain;
+using MBilling.Business.Presenters;
 
 namespace MBilling.UI.Views
 {
@@ -20,6 +17,13 @@ namespace MBilling.UI.Views
         private TaxRatePresenter m_presenter;
 
         #region Properties
+        private int _SelectdModelId;
+
+        public int ModelId
+        {
+            get { return _SelectdModelId; }
+            set { _SelectdModelId = value; }
+        }
         public string Message
         {
             get; set;
@@ -35,6 +39,14 @@ namespace MBilling.UI.Views
         {
             get; set;
         }
+
+        private TaxRateSearch _TaxRateSearch;
+        public TaxRateSearch MySearch
+        {
+            get { return _TaxRateSearch; }
+            set { _TaxRateSearch = value; }
+        }
+
         #endregion
 
         #region Constructor
@@ -105,6 +117,8 @@ namespace MBilling.UI.Views
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            MyModel.TaxName = stxtName.Text;
+            MyModel.StateProvinceId = Convert.ToInt32(cmbStates.SelectedValue.ToString());
             m_presenter.SearchTaxRate();
         }
 
@@ -112,14 +126,10 @@ namespace MBilling.UI.Views
         {
             if (e.RowIndex > 0)
             {
-                // ClearControls();
-                tabNav.SelectedPage = detailTab;
-                var check = grdTaxRste.SelectedRows
-                            .OfType<DataGridViewRow>()
-                            .Cast<TaxRateViewModel>()
-                            .Select(row => (TaxRateViewModel)row);
-                MyModel = check.FirstOrDefault();
+                ClearControls();
+                ModelId = Convert.ToInt32(grdTaxRste.Rows[e.RowIndex].Cells["TaxRateId"].Value.ToString());
                 m_presenter.EditTaxRateClicked();
+                tabNav.SelectedPage = detailTab;
             }
         }
 
@@ -129,7 +139,7 @@ namespace MBilling.UI.Views
         }
         public void ClearControls()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         #endregion

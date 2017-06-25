@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MBilling.UI.Presenters
+namespace MBilling.Business.Presenters
 {
     public class TaxRatePresenter
     {
         private ITaxRateView m_view = null;
-        private TaxRateDao m_taxRateDao =new TaxRateDao();
+        private TaxRateDao m_taxRateDao = new TaxRateDao();
         private StateProvinceDao m_stateProvinceDao = new StateProvinceDao();
         private TaxRateViewModel m_viewModel;
         private IEnumerable<TaxRateViewModel> m_TaxRateViewModelList;
@@ -25,7 +25,7 @@ namespace MBilling.UI.Presenters
             PopulateData();
             TaxRate taxRateDataEntity = new TaxRate();
             TaxRateViewModel taxRateViewModel = new TaxRateViewModel(taxRateDataEntity);
-            m_view.MyModel = m_viewModel;
+            m_view.MyModel = taxRateViewModel;
             m_view.ShowModel(taxRateViewModel);
         }
         public TaxRatePresenter(ITaxRateView p_view, TaxRateDao p_taxRateDao)
@@ -61,6 +61,7 @@ namespace MBilling.UI.Presenters
             IEnumerable<StateProvienceModel> stateViewModel =
                 SResolveViewModelArray(stateEntityList);
             m_StateViewModelList = stateViewModel;
+           
             m_view.ShowStateProvince(m_StateViewModelList);
         }
         private IEnumerable<TaxRateViewModel> ResolveViewModelArray(IEnumerable<TaxRate> taxRateEntityList)
@@ -82,7 +83,8 @@ namespace MBilling.UI.Presenters
 
         public async void SearchTaxRate()
         {
-            IEnumerable<TaxRate> taxRateEntityList = await m_taxRateDao.GetAll();
+            m_viewModel = m_view.MyModel;
+            IEnumerable<TaxRate> taxRateEntityList = await m_taxRateDao.GetAllBy(x => x.TaxName.Contains(m_viewModel.TaxName));
 
             IEnumerable<TaxRateViewModel> taxRateViewModel =
                 ResolveViewModelArray(taxRateEntityList);
@@ -92,9 +94,10 @@ namespace MBilling.UI.Presenters
             m_view.GetAll(m_TaxRateViewModelList);
         }
 
-        public void EditTaxRateClicked()
+        public async void EditTaxRateClicked()
         {
-            m_viewModel = m_view.MyModel;
+            TaxRate taxRateEntity = await m_taxRateDao.GetById(m_view.ModelId);
+            m_viewModel = new TaxRateViewModel(taxRateEntity);
             m_view.ShowModel(m_viewModel);
         }
         public void AddTaxRateClicked()
@@ -124,6 +127,7 @@ namespace MBilling.UI.Presenters
                 {
                     m_taxRateDao.Update(taxRateDataEntity);
                 }
+                GetAllTaxRate();
             }
             else
             {

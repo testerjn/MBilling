@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace MBilling.Common.Interfaces
 {
-    public interface ITaxRateView : IView<TaxRateViewModel>
+    public interface IProductView : IView<ProductViewModel>
     {
-        TaxRateSearch MySearch { get; set; }
         void ReadUserInput();
-        void ShowStateProvince(IEnumerable<StateProvienceModel> lstStateData);
+        void ShowProductType(IEnumerable<ProductTypeViewModel> lstProductTypeData);
         //void Close();
 
     }

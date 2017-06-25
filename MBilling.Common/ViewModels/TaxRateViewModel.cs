@@ -1,4 +1,5 @@
 ﻿using MBilling.Core;
+using MBilling.Core.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,19 +12,18 @@ namespace MBilling.Common.ViewModels
 {
     public class TaxRateViewModel : ViewModel<TaxRate>
     {
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //protected virtual void OnPropertyChanged(string propertyName)
-        //{
-        //    PropertyChangedEventHandler handler = PropertyChanged;
-        //    if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        //}
         private readonly TaxRate m_TaxRateData;
 
         public TaxRateViewModel(TaxRate _TaxRate)
             : base(_TaxRate)
         {
             m_TaxRateData = _TaxRate;
+        }
+
+        public int TaxRateId
+        {
+            get { return m_TaxRateData.TaxRateId; }
+            set { m_TaxRateData.TaxRateId = value; }
         }
 
         public int StateProvinceId
@@ -73,7 +73,6 @@ namespace MBilling.Common.ViewModels
             get { return m_TaxRateData.IsActive; }
             set { m_TaxRateData.IsActive = value; }
         }
-
         public TaxRate TaxRateData { get { return m_TaxRateData; } }
     }
 }

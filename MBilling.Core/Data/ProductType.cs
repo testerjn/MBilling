@@ -12,15 +12,17 @@ namespace MBilling.Core
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class ProductType
     {
         [Key]
         public int ProductTypeId { get; set; }
-        public string ProductType1 { get; set; }
+        public string ProductTypeName { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<bool> IsActive { get; set; }
-    
+
+        [ForeignKey("LatestProductId")]
         public virtual Product Product { get; set; }
     }
 }

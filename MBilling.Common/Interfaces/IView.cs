@@ -8,6 +8,7 @@ namespace MBilling.Common.Interfaces
 {
     public interface IView<M> where M : class
     {
+        int ModelId { get; set; }
         string Message { get; set; }
         M MyModel { get; set; }
         string Title { get; set; }

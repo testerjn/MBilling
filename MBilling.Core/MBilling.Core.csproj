@@ -72,6 +72,7 @@
     <Compile Include="Data\WorkOrderReceivedChallanTax.cs" />
     <Compile Include="Data\WorkOrderTax.cs" />
     <Compile Include="Domain\Person.cs" />
+    <Compile Include="Domain\TaxRateSearch.cs" />
     <Compile Include="Extension\Address.cs" />
     <Compile Include="General\Searchable.cs" />
     <Compile Include="General\StateManager.cs" />

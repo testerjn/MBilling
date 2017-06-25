@@ -10,13 +10,11 @@ namespace MBilling.Common.ViewModels
     public class StateProvienceModel : ViewModel<StateProvince>
     {
         private readonly StateProvince m_StateProvinceData;
-
         public StateProvienceModel(StateProvince _StateProvince)
             : base(_StateProvince)
         {
             m_StateProvinceData = _StateProvince;
         }
-
         public int StateId
         {
             get { return m_StateProvinceData.StateId; }
@@ -34,7 +32,6 @@ namespace MBilling.Common.ViewModels
             get { return m_StateProvinceData.FullName; }
             set { m_StateProvinceData.FullName = value; }
         }
-
         public StateProvince StateProvinceData { get { return m_StateProvinceData; } }
     }
 }
