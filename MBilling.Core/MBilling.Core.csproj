@@ -71,14 +71,17 @@
     <Compile Include="Data\WorkOrderReceivedChallanHeader.cs" />
     <Compile Include="Data\WorkOrderReceivedChallanTax.cs" />
     <Compile Include="Data\WorkOrderTax.cs" />
-    <Compile Include="Domain\Person.cs" />
+    <Compile Include="Domain\Customer.cs" />
     <Compile Include="Domain\TaxRateSearch.cs" />
+    <Compile Include="Domain\Vendor.cs" />
     <Compile Include="Extension\Address.cs" />
     <Compile Include="General\Searchable.cs" />
     <Compile Include="General\StateManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Domain\User.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
