@@ -23,18 +23,6 @@ namespace MBilling.Common.ViewModels
             set { m_ProductType.ProductTypeId = value; }
         }
 
-        public int ProductTypeId
-        {
-            get { return m_ProductType.ProductTypeId; }
-            set
-            {
-                if (value != m_ProductType.ProductTypeId)
-                {
-                    m_ProductType.ProductTypeId = value;
-                    RaisePropertyChangedFor("ProductTypeId");
-                }
-            }
-        }
         public string ProductTypeName
         {
             get { return m_ProductType.ProductTypeName; }

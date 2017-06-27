@@ -53,7 +53,7 @@ namespace MBilling.DataAcces.Models
             return await ProductRepository.FindBy(predicate);
         }
 
-        public async Task<IEnumerable<Product>> GetAllBy(Expression<Func<Product, bool>> filter = null, Func<IEnumerable<ProductDao>, IOrderedEnumerable<ProductDao>> orderBy = null)
+        public async Task<IEnumerable<Product>> GetAllBy(Expression<Func<Product, bool>> filter = null, Func<IEnumerable<Product>, IOrderedEnumerable<Product>> orderBy = null)
         {
             return await ProductRepository.GetAllBy(filter, orderBy);
         }

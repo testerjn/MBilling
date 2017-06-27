@@ -10,7 +10,6 @@ namespace MBilling.Common.Interfaces
 {
     public interface ITaxRateView : IView<TaxRateViewModel>
     {
-        TaxRateSearch MySearch { get; set; }
         void ReadUserInput();
         void ShowStateProvince(IEnumerable<StateProvienceModel> lstStateData);
         //void Close();

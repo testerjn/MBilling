@@ -12,21 +12,42 @@ namespace MBilling.Core
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
+    public enum PersonTypeEnum
+    {
+        User,
+        Customer,
+        Vendor
+    }
     public partial class PersonType
     {
-        
-        public PersonType()
+
+        private PersonType(PersonTypeEnum @enum)
         {
-            this.People = new HashSet<Person>();
+            PersonTypeID = (int)@enum;
+            Name = @enum.ToString();
+            ModifiedDate = DateTime.Now;
+            rowguid = new Guid();
+            //this.People = new HashSet<Person>();
         }
-        [Key]
+
+        protected PersonType()
+        {
+        }
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PersonTypeID { get; set; }
+
+        [Required, MaxLength(100)]
         public string Name { get; set; }
         public System.Guid rowguid { get; set; }
         public System.DateTime ModifiedDate { get; set; }
-    
-        
-        public virtual ICollection<Person> People { get; set; }
+
+        public static implicit operator PersonType(PersonTypeEnum @enum) => new PersonType(@enum);
+
+        public static implicit operator PersonTypeEnum(PersonType persontype) => (PersonTypeEnum)persontype.PersonTypeID;
+
+        //public virtual ICollection<Person> People { get; set; }
     }
 }

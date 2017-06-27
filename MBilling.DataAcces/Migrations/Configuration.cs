@@ -4,6 +4,8 @@ namespace MBilling.DataAcces.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using MBilling.Core;
+    using MBilling.DataAcces.Migrations;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MBilling.DataAcces.BillingDBContext>
     {
@@ -14,6 +16,10 @@ namespace MBilling.DataAcces.Migrations
 
         protected override void Seed(MBilling.DataAcces.BillingDBContext context)
         {
+
+            context.PersonTypes.SeedEnumValues<PersonType, PersonTypeEnum>(@enum => @enum);
+            context.AddressTypes.SeedEnumValues<AddressType, AddressTypeEnum>(@enum => @enum);
+            context.SaveChanges();
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

@@ -12,21 +12,48 @@ namespace MBilling.Core
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    public enum AddressTypeEnum
+    {
+        Billing = 1,
+        Home = 2,
+        MainOffice = 3,
+        Primary = 4,
+        Shipping = 5,
+        Archive = 6
+    }
 
     public partial class AddressType
     {
-        
-        public AddressType()
+
+
+        private AddressType(AddressTypeEnum @enum)
         {
-            this.PersonAddresses = new HashSet<PersonAddress>();
+            AddressTypeID = (int)@enum;
+            Name = @enum.ToString();
+            ModifiedDate = DateTime.Now;
+            rowguid = new Guid();
+            //this.People = new HashSet<Person>();
         }
-        [Key]
+
+        protected AddressType()
+        {
+        }
+        //public AddressType()
+        //{
+        //    this.PersonAddresses = new HashSet<PersonAddress>();
+        //}
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int AddressTypeID { get; set; }
+        [Required, MaxLength(100)]
         public string Name { get; set; }
         public System.Guid rowguid { get; set; }
         public System.DateTime ModifiedDate { get; set; }
-    
-        
-        public virtual ICollection<PersonAddress> PersonAddresses { get; set; }
+
+        public static implicit operator AddressType(AddressTypeEnum @enum) => new AddressType(@enum);
+
+        public static implicit operator AddressTypeEnum(AddressType addressType) => (AddressTypeEnum)addressType.AddressTypeID;
+        //public virtual ICollection<PersonAddress> PersonAddresses { get; set; }
     }
 }

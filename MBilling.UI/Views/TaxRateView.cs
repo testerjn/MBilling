@@ -40,13 +40,6 @@ namespace MBilling.UI.Views
             get; set;
         }
 
-        private TaxRateSearch _TaxRateSearch;
-        public TaxRateSearch MySearch
-        {
-            get { return _TaxRateSearch; }
-            set { _TaxRateSearch = value; }
-        }
-
         #endregion
 
         #region Constructor

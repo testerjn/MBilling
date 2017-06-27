@@ -26,7 +26,8 @@ namespace MBilling.Core
         }
         [Key]
         public int PersonId { get; set; }
-        public int PersonTypeId { get; set; }
+
+        public virtual PersonTypeEnum PersonTypeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string PaymentTerms { get; set; }
