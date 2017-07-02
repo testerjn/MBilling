@@ -27,8 +27,6 @@ namespace MBilling.Core
         [Key]
         public int AddressID { get; set; }
 
-        public virtual AddressTypeEnum AddressTyIpeId { get; set; }
-
         internal string _Address1;
         [Display(Name = "Address1")]
         [Searchable]
@@ -204,9 +202,6 @@ namespace MBilling.Core
                 return _Temp;
             }
         }
-
-
-       
         public object Clone()
         {
             return this.MemberwiseClone();

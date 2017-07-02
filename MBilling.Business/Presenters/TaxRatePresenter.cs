@@ -1,4 +1,5 @@
-﻿using MBilling.Common.Interfaces;
+﻿using MBilling.Business.Business;
+using MBilling.Common.Interfaces;
 using MBilling.Common.ViewModels;
 using MBilling.Core;
 using MBilling.DataAcces.Models;
@@ -32,12 +33,6 @@ namespace MBilling.Business.Presenters
         {
             m_view = p_view;
             m_taxRateDao = p_taxRateDao;
-
-            //TaxRate taxRateDataEntity = new TaxRate();
-            //TaxRateViewModel taxRateViewModel = new TaxRateViewModel(taxRateDataEntity);
-
-            //m_viewModel = taxRateViewModel;
-            //m_view.ShowTaxRate(taxRateViewModel);
         }
         private void PopulateData()
         {
@@ -58,8 +53,8 @@ namespace MBilling.Business.Presenters
         private async void GetAllStateProvince()
         {
             IEnumerable<StateProvince> stateEntityList = await m_stateProvinceDao.GetAll();
-            IEnumerable<StateProvienceModel> stateViewModel =
-                SResolveViewModelArray(stateEntityList);
+            IEnumerable<StateProvienceModel> stateViewModel = ObjectExtensions.ResolveViewModel<IEnumerable<StateProvienceModel>>(stateEntityList);
+                //SResolveViewModelArray(stateEntityList);
             m_StateViewModelList = stateViewModel;
            
             m_view.ShowStateProvince(m_StateViewModelList);
