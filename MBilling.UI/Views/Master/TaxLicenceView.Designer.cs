@@ -1,6 +1,6 @@
 ﻿namespace MBilling.UI.Views
 {
-    partial class TaxRateView
+    partial class TaxLicenceView
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaxRateView));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaxLicenceView));
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.tabNav = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.lstTab = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -47,22 +47,7 @@
             this.btnClear = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.header1 = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
-            this.detailTab = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel5 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.txtTaxName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.taxRateBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nmTaxRate = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
-            this.dtApplydate = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
-            this.chkActive = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
-            this.cmbStateName = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
-            this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.tabNav)).BeginInit();
             this.tabNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstTab)).BeginInit();
@@ -79,15 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.header1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.header1.Panel)).BeginInit();
             this.header1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.detailTab)).BeginInit();
-            this.detailTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
-            this.kryptonPanel2.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.taxRateBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbStateName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
-            this.kryptonPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabNav
@@ -102,9 +79,8 @@
             this.tabNav.Location = new System.Drawing.Point(0, 0);
             this.tabNav.Name = "tabNav";
             this.tabNav.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
-            this.lstTab,
-            this.detailTab});
-            this.tabNav.SelectedIndex = 1;
+            this.lstTab});
+            this.tabNav.SelectedIndex = 0;
             this.tabNav.Size = new System.Drawing.Size(560, 358);
             this.tabNav.TabIndex = 3;
             this.tabNav.Text = "kryptonNavigator1";
@@ -158,8 +134,6 @@
             this.grdTaxRste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdTaxRste.Size = new System.Drawing.Size(558, 227);
             this.grdTaxRste.TabIndex = 0;
-            this.grdTaxRste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTaxRste_CellContentClick);
-            this.grdTaxRste.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTaxRste_CellContentClick);
             // 
             // pnlFind
             // 
@@ -240,7 +214,6 @@
             this.btnSearch.Size = new System.Drawing.Size(90, 25);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Values.Text = "&Search";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnAddNew
             // 
@@ -249,7 +222,6 @@
             this.btnAddNew.Size = new System.Drawing.Size(90, 25);
             this.btnAddNew.TabIndex = 4;
             this.btnAddNew.Values.Text = "Add &new";
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // btnClear
             // 
@@ -258,7 +230,6 @@
             this.btnClear.Size = new System.Drawing.Size(90, 25);
             this.btnClear.TabIndex = 3;
             this.btnClear.Values.Text = "&Clear";
-            this.btnClear.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // header1
             // 
@@ -280,176 +251,18 @@
             this.buttonSpecHeaderGroup1.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.ArrowUp;
             this.buttonSpecHeaderGroup1.UniqueName = "78EF99D45C6842D085B3E55C36D161E6";
             // 
-            // detailTab
-            // 
-            this.detailTab.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.detailTab.Controls.Add(this.kryptonPanel2);
-            this.detailTab.Flags = 65534;
-            this.detailTab.LastVisibleSet = true;
-            this.detailTab.MinimumSize = new System.Drawing.Size(50, 50);
-            this.detailTab.Name = "detailTab";
-            this.detailTab.Size = new System.Drawing.Size(558, 327);
-            this.detailTab.Text = "Detail";
-            this.detailTab.ToolTipTitle = "Page ToolTip";
-            this.detailTab.UniqueName = "D25B46F2E2DD4183BD8D1BDA7F604C57";
-            // 
-            // kryptonPanel2
-            // 
-            this.kryptonPanel2.Controls.Add(this.tableLayoutPanel2);
-            this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(558, 327);
-            this.kryptonPanel2.TabIndex = 0;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.26882F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.73118F));
-            this.tableLayoutPanel2.Controls.Add(this.kryptonLabel2, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.kryptonLabel3, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.kryptonLabel4, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.kryptonLabel5, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.txtTaxName, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.nmTaxRate, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.dtApplydate, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.chkActive, 1, 4);
-            this.tableLayoutPanel2.Controls.Add(this.cmbStateName, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.kryptonPanel3, 1, 5);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 7;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(558, 327);
-            this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // kryptonLabel2
-            // 
-            this.kryptonLabel2.Location = new System.Drawing.Point(3, 3);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(43, 20);
-            this.kryptonLabel2.TabIndex = 0;
-            this.kryptonLabel2.Values.Text = "Name";
-            // 
-            // kryptonLabel3
-            // 
-            this.kryptonLabel3.Location = new System.Drawing.Point(3, 49);
-            this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(74, 20);
-            this.kryptonLabel3.TabIndex = 1;
-            this.kryptonLabel3.Values.Text = "State Name";
-            // 
-            // kryptonLabel4
-            // 
-            this.kryptonLabel4.Location = new System.Drawing.Point(3, 95);
-            this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(57, 20);
-            this.kryptonLabel4.TabIndex = 2;
-            this.kryptonLabel4.Values.Text = "Tax Rate";
-            // 
-            // kryptonLabel5
-            // 
-            this.kryptonLabel5.Location = new System.Drawing.Point(3, 141);
-            this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(71, 20);
-            this.kryptonLabel5.TabIndex = 3;
-            this.kryptonLabel5.Values.Text = "Apply Date";
-            // 
-            // txtTaxName
-            // 
-            this.txtTaxName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taxRateBindingSource, "TaxName", true));
-            this.txtTaxName.Location = new System.Drawing.Point(144, 3);
-            this.txtTaxName.Name = "txtTaxName";
-            this.txtTaxName.Size = new System.Drawing.Size(265, 20);
-            this.txtTaxName.TabIndex = 5;
-            // 
             // taxRateBindingSource
             // 
             this.taxRateBindingSource.DataSource = typeof(MBilling.Common.ViewModels.TaxRateViewModel);
             // 
-            // nmTaxRate
-            // 
-            this.nmTaxRate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.taxRateBindingSource, "TaxRate1", true));
-            this.nmTaxRate.Location = new System.Drawing.Point(144, 95);
-            this.nmTaxRate.Name = "nmTaxRate";
-            this.nmTaxRate.Size = new System.Drawing.Size(191, 22);
-            this.nmTaxRate.TabIndex = 7;
-            // 
-            // dtApplydate
-            // 
-            this.dtApplydate.CalendarTodayDate = new System.DateTime(2009, 8, 20, 0, 0, 0, 0);
-            this.dtApplydate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.taxRateBindingSource, "ApplyDate", true));
-            this.dtApplydate.Location = new System.Drawing.Point(144, 141);
-            this.dtApplydate.Name = "dtApplydate";
-            this.dtApplydate.Size = new System.Drawing.Size(191, 21);
-            this.dtApplydate.TabIndex = 8;
-            // 
-            // chkActive
-            // 
-            this.chkActive.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.taxRateBindingSource, "IsActive", true));
-            this.chkActive.Location = new System.Drawing.Point(144, 187);
-            this.chkActive.Name = "chkActive";
-            this.chkActive.Size = new System.Drawing.Size(69, 20);
-            this.chkActive.TabIndex = 9;
-            this.chkActive.Values.Text = "Is Active";
-            // 
-            // cmbStateName
-            // 
-            this.cmbStateName.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.taxRateBindingSource, "StateProvinceId", true));
-            this.cmbStateName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStateName.DropDownWidth = 191;
-            this.cmbStateName.Location = new System.Drawing.Point(144, 49);
-            this.cmbStateName.Name = "cmbStateName";
-            this.cmbStateName.Size = new System.Drawing.Size(191, 21);
-            this.cmbStateName.TabIndex = 6;
-            // 
-            // kryptonPanel3
-            // 
-            this.kryptonPanel3.Controls.Add(this.btnCancel);
-            this.kryptonPanel3.Controls.Add(this.btnSave);
-            this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel3.Location = new System.Drawing.Point(144, 233);
-            this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.Size = new System.Drawing.Size(411, 40);
-            this.kryptonPanel3.TabIndex = 10;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(175, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(90, 25);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Values.Text = "&Cancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(3, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(90, 25);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Values.Text = "&Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // TaxRateView
+            // TaxLicenceView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 358);
             this.Controls.Add(this.tabNav);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.Name = "TaxRateView";
+            this.Name = "TaxLicenceView";
             this.Text = "Tax Rate Master";
             this.TextExtra = "Master";
             ((System.ComponentModel.ISupportInitialize)(this.tabNav)).EndInit();
@@ -470,16 +283,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.header1.Panel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.header1)).EndInit();
             this.header1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.detailTab)).EndInit();
-            this.detailTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
-            this.kryptonPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.taxRateBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbStateName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
-            this.kryptonPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -496,23 +300,8 @@
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox stxtName;
         private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup header1;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup buttonSpecHeaderGroup1;
-        private ComponentFactory.Krypton.Navigator.KryptonPage detailTab;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnlGridView;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView grdTaxRste;
-        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel2;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel3;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel4;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel5;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtTaxName;
-        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown nmTaxRate;
-        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtApplydate;
-        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox chkActive;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbStateName;
-        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel3;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancel;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnSave;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel6;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbStates;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSearch;

@@ -53,8 +53,7 @@ namespace MBilling.Business.Presenters
         private async void GetAllStateProvince()
         {
             IEnumerable<StateProvince> stateEntityList = await m_stateProvinceDao.GetAll();
-            IEnumerable<StateProvienceModel> stateViewModel = ObjectExtensions.ResolveViewModel<IEnumerable<StateProvienceModel>>(stateEntityList);
-                //SResolveViewModelArray(stateEntityList);
+            IEnumerable<StateProvienceModel> stateViewModel = SResolveViewModelArray(stateEntityList);
             m_StateViewModelList = stateViewModel;
            
             m_view.ShowStateProvince(m_StateViewModelList);

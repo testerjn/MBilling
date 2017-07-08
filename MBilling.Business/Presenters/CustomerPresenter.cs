@@ -38,8 +38,8 @@ namespace MBilling.Business.Presenters
 
         private void PopulateData()
         {
-           //GetAllTaxRate();
-           //GetAllStateProvince();
+            //GetAllTaxRate();
+            //GetAllStateProvince();
         }
 
         private async void GetAllCustomer()
@@ -53,6 +53,15 @@ namespace MBilling.Business.Presenters
 
             m_view.GetAll(m_CustomerViewModelList);
         }
+
+        private IEnumerable<CustomerViewModel> ResolveViewModelArray(IEnumerable<Customer> customerEntityList)
+        {
+            foreach (Customer CustomerEntity in customerEntityList)
+            {
+                yield return new CustomerViewModel(CustomerEntity);
+            }
+        }
+
         private async void GetAllStateProvince()
         {
             //IEnumerable<StateProvince> stateEntityList = await m_stateProvinceDao.GetAll();
@@ -66,19 +75,15 @@ namespace MBilling.Business.Presenters
         public async void SearchCustomer()
         {
             m_viewModel = m_view.MyModel;
-            IEnumerable<Customer> customerEntityList = await m_taxRateDao.GetAllBy(x => x.TaxName.Contains(m_viewModel.TaxName));
 
-            IEnumerable<TaxRateViewModel> taxRateViewModel =ResolveViewModelArray(customerEntityList);
-
-            m_CustomerViewModelList = taxRateViewModel;
-
+            IEnumerable<CustomerViewModel> customerEntitylst = m_CustomerViewModelList.Where(x => x.Name.Contains(m_viewModel.Name)).ToList();
+            m_CustomerViewModelList = customerEntitylst;
             m_view.GetAll(m_CustomerViewModelList);
         }
 
         public async void EditCustomerClicked()
         {
-            Customer customerEntity = await m_PersonDao.GetById(m_view.ModelId);
-            m_viewModel = new CustomerViewModel(customerEntity);
+            m_viewModel = m_CustomerViewModelList.Where(x => x.PersonId == m_view.ModelId).FirstOrDefault();
             m_view.ShowModel(m_viewModel);
         }
         public void AddCustomerClicked()
@@ -95,20 +100,21 @@ namespace MBilling.Business.Presenters
         public void SaveClicked()
         {
             m_view.ReadUserInput();
-            Customer customerDataEntity = m_viewModel.TaxRateData;
+            Customer customerDataEntity = m_viewModel.CustomerData;
             List<string> lstMessages = new List<string>();
-            bool isValid = m_taxRateDao.Validate(customerDataEntity, out lstMessages);
+            bool isValid = m_PersonDao.Validate(customerDataEntity, out lstMessages);
             if (isValid)
             {
+                Person mypersonEntity = customerDataEntity as Person;
                 if (customerDataEntity.PersonId == 0)
                 {
-                    m_taxRateDao.Insert(customerDataEntity);
+                    m_PersonDao.Insert(mypersonEntity);
                 }
                 else
                 {
-                    m_taxRateDao.Update(taxRateDataEntity);
+                    m_PersonDao.Update(mypersonEntity);
                 }
-                GetAllTaxRate();
+                GetAllCustomer();
             }
             else
             {
