@@ -17,8 +17,8 @@ namespace MBilling.DataAcces.Migrations
         protected override void Seed(MBilling.DataAcces.BillingDBContext context)
         {
 
-            context.PersonTypes.SeedEnumValues<PersonType, PersonTypeEnum>(@enum => @enum);
-            context.AddressTypes.SeedEnumValues<AddressType, AddressTypeEnum>(@enum => @enum);
+            //context.PersonTypes.SeedEnumValues<PersonType, PersonTypeEnum>(@enum => @enum);
+            //context.AddressTypes.SeedEnumValues<AddressType, AddressTypeEnum>(@enum => @enum);
             context.SaveChanges();
             //  This method will be called after migrating to the latest version.
 

@@ -18,6 +18,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBilling.Business", "MBilling.Business\MBilling.Business.csproj", "{A78FE56F-4101-4403-98E7-5E551BBCD7CB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{AE153124-BDD0-45EC-882D-7AA63FE2CCBD}"
+	ProjectSection(SolutionItems) = preProject
+		D:\New folder (2)\MErpBillingScript.sql = D:\New folder (2)\MErpBillingScript.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -90,16 +90,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Forms\Customers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Forms\Customers.Designer.cs">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Master\TaxLicenceView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Master\TaxLicenceView.Designer.cs">
       <DependentUpon>TaxLicenceView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TaxRateView.cs">
+    <Compile Include="Views\Master\TaxRateView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TaxRateView.Designer.cs">
+    <Compile Include="Views\Master\TaxRateView.Designer.cs">
       <DependentUpon>TaxRateView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\usrAddressDetails.cs">
@@ -120,10 +126,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Forms\Customers.resx">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Master\TaxLicenceView.resx">
       <DependentUpon>TaxLicenceView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TaxRateView.resx">
+    <EmbeddedResource Include="Views\Master\TaxRateView.resx">
       <DependentUpon>TaxRateView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\usrAddressDetails.resx">
