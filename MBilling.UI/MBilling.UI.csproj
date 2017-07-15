@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MBilling.UI</RootNamespace>
     <AssemblyName>MBilling.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -109,10 +110,16 @@
       <DependentUpon>TaxRateView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\usrAddressDetails.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\UserControls\usrAddressDetails.Designer.cs">
       <DependentUpon>usrAddressDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\usrContactDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\usrContactDetail.Designer.cs">
+      <DependentUpon>usrContactDetail.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MDIBillingMaster.resx">
       <DependentUpon>MDIBillingMaster.cs</DependentUpon>
@@ -125,6 +132,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\Forms\Customers.resx">
       <DependentUpon>Customers.cs</DependentUpon>
@@ -137,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\usrAddressDetails.resx">
       <DependentUpon>usrAddressDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\usrContactDetail.resx">
+      <DependentUpon>usrContactDetail.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

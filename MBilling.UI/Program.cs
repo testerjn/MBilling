@@ -1,4 +1,5 @@
 ﻿using MBilling.UI.Views;
+using MBilling.UI.Views.Forms;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -33,7 +34,7 @@ namespace MBilling.UI
                 new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TaxRateView());
+            Application.Run(new Customers());
         }
 
         static void Application_ThreadException

@@ -388,7 +388,6 @@
             // 
             // dtApplydate
             // 
-            this.dtApplydate.CalendarTodayDate = new System.DateTime(2009, 8, 20, 0, 0, 0, 0);
             this.dtApplydate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.taxRateBindingSource, "ApplyDate", true));
             this.dtApplydate.Location = new System.Drawing.Point(144, 141);
             this.dtApplydate.Name = "dtApplydate";

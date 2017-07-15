@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ComponentFactory.Krypton.Toolkit;
 
 namespace MBilling.UI.Views.UserControls
 {
-    public partial class usrAddressDetails : UserControl
+    public partial class usrContactDetail : UserControl
     {
-        public usrAddressDetails()
+        public usrContactDetail()
         {
             InitializeComponent();
         }
