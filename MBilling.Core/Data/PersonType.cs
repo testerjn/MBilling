@@ -25,7 +25,7 @@ namespace MBilling.Core
 
         private PersonType(PersonTypeEnum @enum)
         {
-            PersonTypeID = (int)@enum;
+            PersonTypeID = @enum;
             Name = @enum.ToString();
             ModifiedDate = DateTime.Now;
             rowguid = new Guid();
@@ -37,7 +37,7 @@ namespace MBilling.Core
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PersonTypeID { get; set; }
+        public PersonTypeEnum PersonTypeID { get; set; }
 
         [Required, MaxLength(100)]
         public string Name { get; set; }

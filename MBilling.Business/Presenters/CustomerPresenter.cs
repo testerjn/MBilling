@@ -63,9 +63,16 @@ namespace MBilling.Business.Presenters
 
         private IEnumerable<CustomerViewModel> ResolveViewModelArray(IEnumerable<Customer> customerEntityList)
         {
-            foreach (Customer CustomerEntity in customerEntityList)
+            if (customerEntityList != null)
             {
-                yield return new CustomerViewModel(CustomerEntity);
+                foreach (Customer CustomerEntity in customerEntityList)
+                {
+                    yield return new CustomerViewModel(CustomerEntity);
+                }
+            }
+            else
+            {
+                new CustomerViewModel(new Customer());
             }
         }
 

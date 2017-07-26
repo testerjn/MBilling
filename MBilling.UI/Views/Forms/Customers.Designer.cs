@@ -47,7 +47,6 @@
             this.buttonSpecHeaderGroup1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.detailTab = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.usrContactDetail1 = new MBilling.UI.Views.UserControls.usrContactDetail();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -66,6 +65,7 @@
             this.txtName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usrContactDetail1 = new MBilling.UI.Views.UserControls.usrContactDetail();
             ((System.ComponentModel.ISupportInitialize)(this.tabNav)).BeginInit();
             this.tabNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstTab)).BeginInit();
@@ -287,14 +287,6 @@
             this.kryptonPanel2.Size = new System.Drawing.Size(578, 496);
             this.kryptonPanel2.TabIndex = 1;
             // 
-            // usrContactDetail1
-            // 
-            this.usrContactDetail1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.usrContactDetail1.Location = new System.Drawing.Point(0, 321);
-            this.usrContactDetail1.Name = "usrContactDetail1";
-            this.usrContactDetail1.Size = new System.Drawing.Size(578, 89);
-            this.usrContactDetail1.TabIndex = 19;
-            // 
             // kryptonPanel4
             // 
             this.kryptonPanel4.Controls.Add(this.btnCancel);
@@ -458,12 +450,19 @@
             // 
             this.customerBindingSource.DataSource = typeof(MBilling.Common.ViewModels.CustomerViewModel);
             // 
+            // usrContactDetail1
+            // 
+            this.usrContactDetail1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.usrContactDetail1.Location = new System.Drawing.Point(0, 321);
+            this.usrContactDetail1.Name = "usrContactDetail1";
+            this.usrContactDetail1.Size = new System.Drawing.Size(578, 89);
+            this.usrContactDetail1.TabIndex = 19;
+            // 
             // Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(580, 527);
             this.Controls.Add(this.tabNav);
             this.Name = "Customers";
